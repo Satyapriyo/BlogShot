@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
 import Navbar from "../src/components/Navbar/Navbar";
 import Home from "../src/pages/home/Home";
@@ -9,9 +9,9 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import { Route,Routes } from "react-router-dom";
 import SinglePost from "./components/singlePost/SinglePost";
+import { Context } from "./context/Context";
 function App() {
-  const user =false;
-
+  const {user} = useContext(Context);
   return (
     <>
       <Navbar />

@@ -46,3 +46,7 @@
   border-radius: 10px;
   font-size: 17px;
 }
+.loginButton:disabled{
+  cursor: not-allowed;
+  background: #ffa8a8;
+}

@@ -7,8 +7,11 @@ const userRoute = require("./routes/user");
 const postRoute = require("./routes/posts");
 const catagoriesRoute = require("./routes/catagories");
 const multer = require("multer");
+const cors = require("cors");
 require("dotenv").config();
+// app.use(express.urlencoded({extended:true}))
 app.use(express.json());
+app.use(cors());
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
