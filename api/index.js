@@ -14,7 +14,7 @@ require("dotenv").config();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://blog-shot-api.vercel.app/"],
+    origin: ["https://blog-shot-api.vercel.app"],
     methods: ["POST", "GET", "PUT"],
     credentials: true,
   })
