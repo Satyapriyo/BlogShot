@@ -22,10 +22,7 @@ app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
-  .connect(
-    "mongodb+srv://satya:satya123@clusternew.3jgx2h0.mongodb.net/?retryWrites=true&w=majority",
-    { useNewUrlParser: true }
-  )
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true })
   .then(() => {
     console.log("connected to mongodb ...🚀🚀");
   })
