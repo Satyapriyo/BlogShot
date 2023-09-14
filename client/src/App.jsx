@@ -7,21 +7,21 @@ import Write from "../src/pages/write/Write";
 import Settings from "./pages/settings/Settings";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import { Route,Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import SinglePost from "./components/singlePost/SinglePost";
 import { Context } from "./context/Context";
 function App() {
-  const {user} = useContext(Context);
+  const { user } = useContext(Context);
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="login" element={user? <Home/> : <Login/>}/>
-        <Route path="settings" element={user? <Settings/> : <Register/>}/>
-        <Route path="register" element={user?<Login/>:<Register/>}/>
-        <Route path="write" element={user? <Write/> : <Register/>}/>
-        <Route path="post/:postid" element={<Single/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={user ? <Home /> : <Login />} />
+        <Route path="settings" element={user ? <Settings /> : <Register />} />
+        <Route path="register" element={user ? <Login /> : <Register />} />
+        <Route path="write" element={user ? <Write /> : <Register />} />
+        <Route path="post/:postid" element={<Single />} />
       </Routes>
       {/* <Home /> */}
       {/* <Single/> */}

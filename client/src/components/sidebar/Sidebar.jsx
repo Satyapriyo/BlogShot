@@ -30,7 +30,7 @@ const Sidebar = () => {
         <div className="sidebarList">
           {cats.map((c) => (
             <>
-              <Link key={c.createdAt} className="link" to={`/?cat=${c.name}`}>
+              <Link key={c._id} className="link" to={`/?cat=${c.name}`}>
                 <div className="sidebarListItem">{c.name}</div>
               </Link>
             </>

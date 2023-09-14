@@ -8,30 +8,33 @@ const postRoute = require("./routes/posts");
 const catagoriesRoute = require("./routes/catagories");
 const multer = require("multer");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cors());
+
+app.use("/images",express.static(path.join(__dirname,"/images")))
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("connected to mongodb ...🚀🚀");
   })
   .catch((err) => {
-    console.log(err);
+    console.log("the error is \n" + err);
   });
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, req.body.name);
+    cb(null, "images");
   },
   filename: (req, file, cb) => {
-    cb(null, "hello.jpeg");
+    cb(null, req.body.name);
   },
 });
 
 const upload = multer({ storage: storage });
-app.post("api/upload", upload.single("file"), (req, res) => {
+app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("file hasbeen uploaded");
 });
 

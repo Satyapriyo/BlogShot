@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./singlePost.css";
+import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+
 const SinglePost = () => {
   const location = useLocation();
+  const { user } = useContext(Context);
+  const pf = "http://localhost:3003/images/";
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
   useEffect(() => {
@@ -14,22 +18,39 @@ const SinglePost = () => {
     };
     getPost();
   }, [path]);
+  const handleDelete = async (e) => {
+    try {
+      await axios.delete(`/post/${path}`, {
+        data: { username: user.username },
+      });
+      window.location.replace("/");
+    } catch (err) {
+      console.log("not working.....!");
+    }
+  };
+  console.log(post.username === user.username);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img className="singlePostImg" src={post.photo} alt="" />
+        <img className="singlePostImg" src={pf + post.photo} alt="" />
         <h1 className="siglePostTitle">
           {post.title}
-          <div className="singlePostEditContainer">
-            <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
-            <i className="singlePostIcon fa-sharp fa-solid fa-trash"></i>
-          </div>
+          {post.username === user.username && (
+            <div className="singlePostEditContainer">
+              <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
+              <i
+                className="singlePostIcon fa-sharp fa-solid fa-trash"
+                onClick={handleDelete}
+              ></i>
+            </div>
+          )}
         </h1>
         <div className="singlePostInfo">
           <span>
             Author:
-            <Link className="link" to={`/?user=${post.username}`}><b>{post.username}</b> </Link>
-             
+            <Link className="link" to={`/?user=${post.username}`}>
+              <b>{post.username}</b>{" "}
+            </Link>
           </span>
         </div>
         <p className="singlePostDesc">{post.desc}</p>

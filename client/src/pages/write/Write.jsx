@@ -1,11 +1,50 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./write.css";
-
+import { Context } from "../../context/Context";
+import axios from "axios";
 const Write = () => {
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [file, setFile] = useState(null);
+  const { user } = useContext(Context);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newPost = {
+      username: user.username,
+      title,
+      desc,
+    };
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.photo = fileName;
+      try {
+        await axios.post("http://localhost:3003/api/upload", data);
+      } catch (err) {
+        console.log("the error is \n");
+      }
+    }
+    try {
+      const res = await axios.post("http://localhost:3003/api/post", newPost);
+      window.location.replace("/post/" + res.data._id);
+      console.log(res);
+    } catch (err) {
+      console.log("something wrong\n");
+    }
+  };
+  // "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   return (
     <div className="write">
-      <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" className="writeImg" alt="" />
-      <form className="writeForm">
+      {file && (
+        <img
+          src={URL.createObjectURL(file)}
+          className="writeImg"
+          alt="helloBaby"
+        />
+      )}
+      <form className="writeForm" onSubmit={handleSubmit}>
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
             <i className="writeIcon fa-solid fa-plus"></i>
@@ -15,6 +54,11 @@ const Write = () => {
             name="file"
             id="fileInput"
             style={{ display: "none" }}
+            onChange={(e) => {
+              if (e.target.files.length != 0) {
+                setFile(e.target.files[0]);
+              }
+            }}
           />
           <input
             type="text"
@@ -23,6 +67,7 @@ const Write = () => {
             id=""
             autoFocus={true}
             className="writeInput"
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="writeFormGroup">
@@ -30,9 +75,12 @@ const Write = () => {
             placeholder="Tell your story......"
             className="writeInput writeText"
             type="text"
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
-        <button className="writeSubmit">Publish</button>
+        <button className="writeSubmit" type="submit">
+          Publish
+        </button>
       </form>
     </div>
   );
