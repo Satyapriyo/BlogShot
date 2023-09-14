@@ -19,9 +19,8 @@ app.use(cors());
 //   credentials: true,
 // }
 
-
-
 app.use("/images", express.static(path.join(__dirname, "/images")));
+console.log(process.env.MONGO_URL);
 mongoose
   .connect(process.env.MONGO_URL, { useNewUrlParser: true })
   .then(() => {
