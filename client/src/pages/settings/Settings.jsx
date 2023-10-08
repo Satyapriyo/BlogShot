@@ -1,6 +1,6 @@
 import React from "react";
 import "./settings.css";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "../../components/sidebar/Sidebar";
 const Settings = () => {
   return (
     <div className="settings">
