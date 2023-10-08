@@ -51,3 +51,6 @@ app.use("/api/catagories", catagoriesRoute);
 app.listen("3003", () => {
   console.log("running nodejs http://localhost:3003");
 });
+app.get("/",(req,res)=>{
+  res.send("HI");
+})
