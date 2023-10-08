@@ -10,6 +10,22 @@
     {
       "src": "/(.*)",
       "dest": "index.js"
+    },
+    {
+      "src": "/api/auth",
+      "dest": "/routes/auth.js"
+    },
+    {
+      "src": "/api/user",
+      "dest": "/routes/user.js"
+    },
+    {
+      "src": "/api/post",
+      "dest": "/routes/post.js"
+    },
+    {
+      "src": "/api/catagories",
+      "dest": "/routes/catagories.js"
     }
   ]
 }
