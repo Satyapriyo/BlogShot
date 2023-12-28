@@ -13,7 +13,7 @@ require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cors({
-  origin: ["https://blog-shot-api.vercel.app"],
+  origin: ["https://blog-shot-api.vercel.app/api"],
   methods: ["POST", "GET", "PUT"],
   credentials: true,
 }));
