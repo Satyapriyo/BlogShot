@@ -6,6 +6,7 @@
   background: url("/bg-city.jpg");
   background-size: cover;
   align-items: center;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .loginTitle {
@@ -34,10 +35,10 @@
   padding: 10px;
 }
 
-.LoginRegisterButton{
+.LoginRegisterButton {
   position: absolute;
   top: 60px;
-  right:20px;
+  right: 20px;
   background: teal;
   cursor: pointer;
   border: none;
@@ -46,7 +47,7 @@
   border-radius: 10px;
   font-size: 17px;
 }
-.loginButton:disabled{
+.loginButton:disabled {
   cursor: not-allowed;
   background: #ffa8a8;
 }

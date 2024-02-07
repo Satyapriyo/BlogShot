@@ -1,48 +1,49 @@
 .register {
-    height: calc(100vh - 50px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: url("https://images.unsplash.com/photo-1681249360220-ade17886da75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
-    background-size: cover;
-    align-items: center;
-  }
-  
-  .registerTitle {
-    font-size: 50px;
-  }
-  .registerForm {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  .registerForm > input {
-    margin: 10px 0px;
-  }
-  .registerInput {
-    padding: 10px;
-    background: #f5f5f5;
-    border: none;
-  }
-  .registerButton {
-    margin-top: 20px;
-    cursor: pointer;
-    background: teal;
-    border: none;
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-  }
-  
-  .LoginRegisterButton{
-    position: absolute;
-    top: 60px;
-    right:20px;
-    background: lightcoral;
-    cursor: pointer;
-    border: none;
-    padding: 10px;
-    color: white;
-    border-radius: 10px;
-    font-size: 17px;
-  }
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url("https://images.unsplash.com/photo-1681249360220-ade17886da75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-size: cover;
+  align-items: center;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.registerTitle {
+  font-size: 50px;
+}
+.registerForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.registerForm > input {
+  margin: 10px 0px;
+}
+.registerInput {
+  padding: 10px;
+  background: #f5f5f5;
+  border: none;
+}
+.registerButton {
+  margin-top: 20px;
+  cursor: pointer;
+  background: teal;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.LoginRegisterButton {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: lightcoral;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  font-size: 17px;
+}
