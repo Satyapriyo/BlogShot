@@ -24,11 +24,16 @@
   padding: 10px;
   background: #f5f5f5;
   border: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-shadow: 1px 1px 3px rgb(129, 129, 129);
+  border-radius: 0.6rem;
+  outline-color: lightcoral;
 }
 .registerButton {
   margin-top: 20px;
   cursor: pointer;
-  background: teal;
+  background: lightcoral;
   border: none;
   color: white;
   border-radius: 10px;

@@ -24,6 +24,14 @@
   padding: 10px;
   background: #f5f5f5;
   border: none;
+  display: block;
+  width: 100%;
+  border: 0px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-shadow: 1px 1px 3px rgb(129, 129, 129);
+  border-radius: 0.6rem;
+  outline-color: palevioletred;
 }
 .loginButton {
   margin-top: 20px;
@@ -39,7 +47,7 @@
   position: absolute;
   top: 60px;
   right: 20px;
-  background: teal;
+  background: lightcoral;
   cursor: pointer;
   border: none;
   padding: 10px;
