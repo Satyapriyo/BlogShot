@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "https://blog-shot-api.vercel.app/api",
+  "proxy": "http://localhost:3003/api",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
