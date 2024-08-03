@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const Post = require("../models/Post");
 
 //UPDATE
+// TODO: try to implement using jsonwebtoken
 router.put("/:id", async (req, res) => {
   if (req.body.userId == req.params.id) {
     if (req.body.password) {
@@ -36,7 +37,7 @@ router.delete("/:id", async (req, res) => {
       try {
         await Post.deleteMany({ username: user.username });
         await User.findByIdAndDelete(req.params.id);
-        res.status(201).json("user hasbeen deleted ..");
+        res.status(201).json("user has been deleted ..");
       } catch (err) {
         if (user) {
           res.status(500).json(err);

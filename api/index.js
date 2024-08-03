@@ -9,12 +9,13 @@ const catagoriesRoute = require("./routes/catagories");
 const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
+
 require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cors({
   origin: ["https://blog-shot-api.vercel.app/api"],
-  methods: ["POST", "GET", "PUT"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
   credentials: true,
 }));
 
@@ -49,7 +50,7 @@ app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
 app.use("/api/catagories", catagoriesRoute);
 app.listen("3003", () => {
-  console.log("running nodejs http://localhost:3003");
+  console.log("Running Backend http://localhost:3003");
 });
 app.get("/", (req, res) => {
   res.send("server is working 🚀🚀");
