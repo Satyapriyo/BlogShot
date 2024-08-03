@@ -21,13 +21,13 @@ const Write = () => {
       data.append("file", file);
       newPost.photo = fileName;
       try {
-        await axios.post("http://localhost:3003/api/upload", data);
+        await axios.post("https://blog-api-or6z.onrender.com/api/upload", data);
       } catch (err) {
         console.log("the error is \n");
       }
     }
     try {
-      const res = await axios.post("http://localhost:3003/api/post", newPost);
+      const res = await axios.post("https://blog-api-or6z.onrender.com/api/post", newPost);
       window.location.replace("/post/" + res.data._id);
       console.log(res);
     } catch (err) {

@@ -11,7 +11,7 @@ const Register = () => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("http://localhost:3003/api/auth/register", {
+      const res = await axios.post("https://blog-api-or6z.onrender.com/api/auth/register", {
         username,
         email,
         password,
