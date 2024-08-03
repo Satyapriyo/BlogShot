@@ -13,11 +13,11 @@ const path = require("path");
 require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))
 app.use(express.json());
-app.use(cors({
-  origin: ["https://blog-shot-api.vercel.app/api"],
-  methods: ["POST", "GET", "PUT", "DELETE"],
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: ["https://blog-shot-api.vercel.app/api"],
+//   methods: ["POST", "GET", "PUT", "DELETE"],
+//   credentials: true,
+// }));
 
 
 app.use("/images", express.static(path.join(__dirname, "/images")));
