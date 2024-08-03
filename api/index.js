@@ -13,6 +13,7 @@ const path = require("path");
 require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))
 app.use(express.json());
+app.use(cors())
 // app.use(cors({
 //   origin: ["https://blog-shot-api.vercel.app/api"],
 //   methods: ["POST", "GET", "PUT", "DELETE"],

@@ -12,6 +12,7 @@ const Home = () => {
     const fetchPosts = async () => {
       const res = await axios.get("http://localhost:3003/api/post" + search);
       setPosts(res.data);
+      console.log(res);
     };
     fetchPosts();
   }, [search]);

@@ -7,11 +7,12 @@ import axios from "axios";
 
 const SinglePost = () => {
   const location = useLocation();
+  console.log(location);
   const { user } = useContext(Context);
   const pf = "http://localhost:3003/images/";
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
-  useEffect(() => {
+  useEffect(() => {  
     const getPost = async () => {
       const res = await axios.get("http://localhost:3003/api/post/" + path);
       setPost(res.data);
@@ -28,7 +29,7 @@ const SinglePost = () => {
       console.log("not working.....!");
     }
   };
-  console.log(post.username === user.username);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
