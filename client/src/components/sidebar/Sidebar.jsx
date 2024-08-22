@@ -6,7 +6,7 @@ const Sidebar = () => {
   const [cats, setCats] = useState([]);
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("https://blog-api-or6z.onrender.com/api/catagories");
+      const res = await axios.get("http://16.171.7.188:3003/api/catagories");
       setCats(res.data);
     };
     getCats();

@@ -2,7 +2,7 @@ import React from "react";
 import "./post.css";
 import { Link } from "react-router-dom";
 const Post = ({ post }) => {
-  const pf = "https://blog-api-or6z.onrender.com/images/";
+  const pf = "http://16.171.7.188:3003/images/";
   return (
     <div className="post">
       {post.photo ? (
