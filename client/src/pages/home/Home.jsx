@@ -12,7 +12,7 @@ const Home = () => {
   const { search } = useLocation();
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("http://16.171.7.188:3003/api/post" + search);
+      const res = await axios.get("https://blog-api-or6z.onrender.com/api/post" + search);
       setPosts(res.data);
       console.log(res);
     };

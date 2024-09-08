@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("http://16.171.7.188:3003/api/auth/login", {
+      const res = await axios.post("https://blog-api-or6z.onrender.com/api/auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });

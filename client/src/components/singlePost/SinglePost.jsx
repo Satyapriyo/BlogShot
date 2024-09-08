@@ -9,12 +9,12 @@ const SinglePost = () => {
   const location = useLocation();
   console.log(location);
   const { user } = useContext(Context);
-  const pf = "http://16.171.7.188:3003/images/";
+  const pf = "https://blog-api-or6z.onrender.com/images/";
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
   useEffect(() => {  
     const getPost = async () => {
-      const res = await axios.get("http://16.171.7.188:3003/api/post/" + path);
+      const res = await axios.get("https://blog-api-or6z.onrender.com/api/post/" + path);
       setPost(res.data);
     };
     getPost();
