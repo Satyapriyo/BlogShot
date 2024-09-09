@@ -4,6 +4,7 @@ import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
 
 const SinglePost = () => {
   const location = useLocation();
@@ -12,9 +13,11 @@ const SinglePost = () => {
   const pf = "https://blog-api-or6z.onrender.com/images/";
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
-  useEffect(() => {  
+  useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("https://blog-api-or6z.onrender.com/api/post/" + path);
+      const res = await axios.get(
+        "https://blog-api-or6z.onrender.com/api/post/" + path
+      );
       setPost(res.data);
     };
     getPost();
@@ -34,8 +37,8 @@ const SinglePost = () => {
     <div className="singlePost">
       <div className="singlePostWrapper">
         <img className="singlePostImg" src={pf + post.photo} alt="" />
-        <h1 className="siglePostTitle">
-          {post.title}
+        <h1 className="siglePostTitle font-bold text-3xl mt-10 mb-10">
+        {post.title}
           {post.username === user.username && (
             <div className="singlePostEditContainer">
               <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
@@ -46,6 +49,7 @@ const SinglePost = () => {
             </div>
           )}
         </h1>
+
         <div className="singlePostInfo">
           <span>
             Author:
@@ -54,7 +58,9 @@ const SinglePost = () => {
             </Link>
           </span>
         </div>
-        <p className="singlePostDesc">{post.desc}</p>
+        <p className="singlePostDesc">
+          <ReactMarkdown>{post.desc}</ReactMarkdown>
+        </p>
       </div>
     </div>
   );

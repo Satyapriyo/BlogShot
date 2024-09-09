@@ -1,17 +1,18 @@
 import React from "react";
 import "./Header.css";
+import heroImg from "../../assets/blue-surface-with-study-tools-min.jpg";
 const Header = () => {
   return (
     <>
-      <div className="header">
-        <div className="headerTitles">
-          <span className="headerTitleSm text-white mt-10">
+      <div className="header ">
+        <img className="headerImg -mt-20  " src={heroImg} alt="" />
+        <div className="headerTitles mt-72">
+          <span className="headerTitleSm mt-20 text-black ">
             Where stories connect and ideas ignite—welcome to your blogging
             haven!
           </span>
           <span className="headerTitleLg font-bold">BlogShot</span>
         </div>
-        <img className="headerImg mb-36" src="/night.jpg" alt="" />
       </div>
     </>
   );

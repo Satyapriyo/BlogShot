@@ -7,6 +7,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();

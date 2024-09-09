@@ -1,6 +1,9 @@
-.posts{
-    flex:9;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.posts {
+  flex: 9;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.fontnew {
+  font-family: "Lora", sarif;
 }
