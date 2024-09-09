@@ -44,7 +44,7 @@ const Navbar = () => {
               Login
             </Link>{" "}
             <Link className="topListItem link" to="register">
-              Registet
+              Register
             </Link>
           </>
         )}
