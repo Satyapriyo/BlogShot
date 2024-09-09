@@ -5,10 +5,13 @@ const Header = () => {
     <>
       <div className="header">
         <div className="headerTitles">
-          <span className="headerTitleSm">React & Node</span>
-          <span className="headerTitleLg">Blog</span>
+          <span className="headerTitleSm text-white mt-10">
+            Where stories connect and ideas ignite—welcome to your blogging
+            haven!
+          </span>
+          <span className="headerTitleLg font-bold">BlogShot</span>
         </div>
-        <img className="headerImg" src="/night.jpg" alt="" />
+        <img className="headerImg mb-36" src="/night.jpg" alt="" />
       </div>
     </>
   );

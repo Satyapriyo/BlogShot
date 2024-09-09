@@ -2,7 +2,7 @@ import "./Navbar.css";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
-
+import userImage from "../../assets/profile-default.svg";
 const Navbar = () => {
   const { user, dispatch } = useContext(Context);
   const handelLogout = () => {
@@ -37,7 +37,7 @@ const Navbar = () => {
       </div>
       <div className="topRight">
         {user ? (
-          <img className="topImg" src={user.profilePic} alt="img" srcSet="" />
+          <img className="topImg" src={userImage} alt="img" srcSet="" /> //{user.profilePic}
         ) : (
           <>
             <Link className="topListItem link" to="login">
