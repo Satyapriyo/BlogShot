@@ -24,7 +24,7 @@ const Navbar = () => {
           <Link className="topListItem link" to="about">
             About
           </Link>
-          <Link className="topListItem link" to="contacts">
+          <Link className="topListItem link" to="contact">
             Contact
           </Link>
           <Link className="topListItem link" to="write">
