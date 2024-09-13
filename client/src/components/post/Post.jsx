@@ -22,7 +22,17 @@ const Post = ({ post }) => {
         {post.catagories.map((p) => {
           <span className="postCat">{p}</span>;
         })}
-        <Link className="link" to={`/post/${post._id}`}>
+        <Link
+          className="link"
+          onClick={() => {
+            window.scroll({
+              top: 0,
+              left: 0,
+              behavior: "smooth",
+            });
+          }}
+          to={`/post/${post._id}`}
+        >
           {" "}
           <span className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">
             {post.title}
@@ -36,16 +46,22 @@ const Post = ({ post }) => {
       </div>
       <p className="postDesc mx-auto text-base leading-relaxed text-gray-500">
         {post.desc}
-       
       </p>
       <Link
-          to={`/post/${post._id}`}
-          class="inline-flex link  items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
-          title="read more"
-        >
-          {" "}
-          Read More »{" "}
-        </Link>
+        to={`/post/${post._id}`}
+        onClick={() => {
+          window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          });
+        }}
+        className="inline-flex link  items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
+        title="read more"
+      >
+        {" "}
+        Read More »{" "}
+      </Link>
     </div>
   );
 };

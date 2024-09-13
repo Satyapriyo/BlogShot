@@ -13,6 +13,7 @@ const SinglePost = () => {
   const pf = "https://blog-api-or6z.onrender.com/images/";
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
+
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get(
@@ -38,7 +39,7 @@ const SinglePost = () => {
       <div className="singlePostWrapper">
         <img className="singlePostImg" src={pf + post.photo} alt="" />
         <h1 className="siglePostTitle font-bold text-3xl mt-10 mb-10">
-        {post.title}
+          {post.title}
           {post.username === user.username && (
             <div className="singlePostEditContainer">
               <i className="singlePostIcon fa-regular fa-pen-to-square"></i>

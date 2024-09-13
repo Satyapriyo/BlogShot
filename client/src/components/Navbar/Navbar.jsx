@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import userImage from "../../assets/profile-default.svg";
+import logo from "../../assets/NewLogo.png";
 const Navbar = () => {
   const { user, dispatch } = useContext(Context);
   const handelLogout = () => {
@@ -11,10 +12,11 @@ const Navbar = () => {
   return (
     <div className="top">
       <div className="topLeft">
-        <i className="topIcon fa-brands fa-square-instagram"></i>
+        {/* <i className="topIcon fa-brands fa-square-instagram"></i>
         <i className="topIcon fa-brands fa-square-facebook"></i>
         <i className="topIcon fa-brands fa-pinterest"></i>
-        <i className="topIcon fa-brands fa-square-twitter"></i>
+        <i className="topIcon fa-brands fa-square-twitter"></i> */}
+        <img src={logo} width={120} alt="" />
       </div>
       <div className="topCenter">
         <ul className="topList">
