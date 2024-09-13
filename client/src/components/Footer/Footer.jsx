@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/blogshotLogo.png";
+import logo from "../../assets/NewLogo.png";
 const Footer = () => {
   return (
     <div>
@@ -7,9 +7,9 @@ const Footer = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <a href="https://pagedone.io/" className="flex justify-center ">
-              <img src={logo} width={70} alt="" />
+              <img src={logo} width={200} alt="" />
             </a>
-            <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-16 mb-10 border-b border-gray-200">
+            <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-2 mb-10 border-b border-gray-200">
               <li>
                 <a href="#" className="text-gray-800 hover:text-gray-900">
                   Pagedone

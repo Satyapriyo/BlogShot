@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "../src/components/Navbar/Navbar";
 import Home from "../src/pages/home/Home";
@@ -10,11 +10,21 @@ import Register from "./pages/register/Register";
 import { Route, Routes } from "react-router-dom";
 import SinglePost from "./components/singlePost/SinglePost";
 import About from "./pages/About/About";
-
+import Lenis from "lenis";
 import { Context } from "./context/Context";
 import Contact from "./pages/Contact/Contact";
 function App() {
   const { user } = useContext(Context);
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
   return (
     <>
       <Navbar />
