@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="w-full py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <a href="https://pagedone.io/" className="flex justify-center ">
+            <a href="/" className="flex justify-center ">
               <img src={logo} width={200} alt="" />
             </a>
             <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-2 mb-10 border-b border-gray-200">
