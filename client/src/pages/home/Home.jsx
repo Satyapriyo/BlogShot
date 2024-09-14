@@ -15,7 +15,7 @@ const Home = () => {
         "https://blog-api-or6z.onrender.com/api/post" + search
       );
       setPosts(res.data);
-      console.log(res);
+      // console.log(res);
     };
     fetchPosts();
   }, [search]);
