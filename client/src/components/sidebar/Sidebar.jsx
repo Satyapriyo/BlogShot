@@ -1,39 +1,42 @@
 import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
 import axios from "axios";
+import SidebarImg from "../../assets/sidebarTop.jpg";
 import { Link } from "react-router-dom";
 const Sidebar = () => {
+  let a = 1;
   const [cats, setCats] = useState([]);
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("https://blog-api-or6z.onrender.com/api/catagories");
+      const res = await axios.get(
+        "https://blog-api-or6z.onrender.com/api/catagories"
+      );
       setCats(res.data);
     };
     getCats();
   }, []);
   return (
-    <div className="sidebar">
+    <div className="sidebar md:block hidden">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME </span>
-        <img
-          src="https://images.unsplash.com/photo-1680464722849-a9ff62493ae1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt=""
-        />
+        <img src={SidebarImg} alt="" />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sed
-          ab animi, non quidem impedit molestiae debitis a incidunt rerum optio
-          illo similique?
+          A next-gen blogging site uses React.js for faster load times and better
+          SEO. Features include AI-powered content recommendations, interactive
+          elements, and PWA support for offline access.Real-time collaboration, and flexible monetization empower
+          creators, while community features enhance engagement, creating an
+          immersive experience for all users.
         </p>
       </div>
-      <div className="sidebarItem">
-        <div className="sidebarTitle">CATAGORIES</div>
-        <div className="sidebarList">
+      <div className="sidebarItem text-left">
+        <div className="sidebarTitle text-left">CATAGORIES</div>
+        <div className="sidebarList flex space-x-3 text-left">
           {cats.map((c) => (
-            <>
-              <Link key={c._id} className="link" to={`/?cat=${c.name}`}>
-                <li className="sidebarListItem">{c.name}</li>
-              </Link>
-            </>
+            <Link key={c._id} className="link" to={`/?cat=${c.name}`}>
+              <li className="text-xl px-6 py-2 rounded-2xl  text-gray-500 bg-slate-200">
+                {c.name}
+              </li>
+            </Link>
           ))}
         </div>
       </div>

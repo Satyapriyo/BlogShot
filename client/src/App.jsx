@@ -13,6 +13,7 @@ import About from "./pages/About/About";
 import Lenis from "lenis";
 import { Context } from "./context/Context";
 import Contact from "./pages/Contact/Contact";
+import Blogs from "./components/Blogs/Blogs";
 function App() {
   const { user } = useContext(Context);
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="login" element={user ? <Home /> : <Login />} />

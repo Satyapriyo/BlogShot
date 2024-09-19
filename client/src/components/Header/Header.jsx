@@ -6,12 +6,14 @@ const Header = () => {
     <>
       <div className="header ">
         <img className="headerImg -mt-20  " src={heroImg} alt="" />
-        <div className="headerTitles mt-72">
-          <span className="headerTitleSm mt-20 text-black ">
+        <div className="headerTitles">
+          <span className="-mt-[300px] shadow md:text-[100px] text-3xl font-bold">
+            BlogShot
+          </span>
+          <span className="mt-16 text-black md:text-xl text-lg">
             Where stories connect and ideas ignite—welcome to your blogging
             haven!
           </span>
-          <span className="headerTitleLg font-bold">BlogShot</span>
         </div>
       </div>
     </>

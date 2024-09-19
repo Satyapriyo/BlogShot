@@ -59,9 +59,9 @@ const SinglePost = () => {
             </Link>
           </span>
         </div>
-        <p className="singlePostDesc">
+        <div className="singlePostDesc">
           <ReactMarkdown>{post.desc}</ReactMarkdown>
-        </p>
+        </div>
       </div>
     </div>
   );
