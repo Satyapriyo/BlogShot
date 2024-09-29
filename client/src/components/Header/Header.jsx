@@ -4,8 +4,8 @@ import heroImg from "../../assets/blue-surface-with-study-tools-min.jpg";
 const Header = () => {
   return (
     <>
-      <div className="header ">
-        <img className="headerImg -mt-20  " src={heroImg} alt="" />
+      <div className="header z-10">
+        <img className="headerImg -mt-28  " src={heroImg} alt="" />
         <div className="headerTitles">
           <span className="-mt-[300px] shadow md:text-[100px] text-3xl font-bold">
             BlogShot
