@@ -71,6 +71,14 @@ const Login = () => {
                 placeholder="••••••••"
               />
             </div>
+            <div className="w-full flex flex-col gap-2">
+              <div className="flex gap-2">
+                <p className="text-sm">Don't have an Accout </p>
+                <Link to="/register" className="text-sm text-blue-600">
+                  SignUp
+                </Link>
+              </div>
+            </div>
             <div className="mt-5">
               <button
                 type="submit"

@@ -12,9 +12,9 @@ const stats = [
   { name: "Paid time off", value: "Unlimited" },
 ];
 import Footer from "../../components/Footer/Footer";
-export default function Abouot() {
+export default function About() {
   return (
-    <div>
+    <div className="">
       <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
         <img
           alt=""

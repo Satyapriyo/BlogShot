@@ -14,6 +14,7 @@ import Lenis from "lenis";
 import { Context } from "./context/Context";
 import Contact from "./pages/Contact/Contact";
 import Blogs from "./components/Blogs/Blogs";
+import NewNavbr from "./components/NewNavbar/NewNavbar";
 function App() {
   const { user } = useContext(Context);
   useEffect(() => {
@@ -28,7 +29,8 @@ function App() {
   }, []);
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <NewNavbr />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />

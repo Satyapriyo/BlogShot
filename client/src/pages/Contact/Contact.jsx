@@ -3,9 +3,9 @@ import Footer from "../../components/Footer/Footer";
 const Contact = () => {
   return (
     <div>
-      <div className="relative flex items-top justify-center min-h-screen bg-white sm:items-center sm:pt-0">
+      <div className="relative flex items-top min-h-screen bg-white sm:items-center sm:pt-0">
         <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
-          <div className="mt-8 overflow-hidden">
+          <div className=" overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-6 mr-2 bg-gray-100 sm:rounded-lg">
                 <h1 className="text-4xl sm:text-5xl text-gray-800  font-extrabold tracking-tight">
