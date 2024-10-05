@@ -15,18 +15,22 @@ import { Context } from "./context/Context";
 import Contact from "./pages/Contact/Contact";
 import Blogs from "./components/Blogs/Blogs";
 import NewNavbr from "./components/NewNavbar/NewNavbar";
+import Loading from "./pages/Loading/index";
 function App() {
+
   const { user } = useContext(Context);
   useEffect(() => {
     const lenis = new Lenis();
-
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
+    
     requestAnimationFrame(raf);
+    
   }, []);
+  
+
   return (
     <>
       {/* <Navbar /> */}

@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="home mt-48">
+      <div className="home  bg-gray-100">
         <Posts posts={posts} />
         <Sidebar />
       </div>

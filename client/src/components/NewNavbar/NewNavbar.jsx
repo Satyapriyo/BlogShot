@@ -75,13 +75,13 @@ export default function NewNavbr() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="-z-10 -mt-8 md:pb-4 pb-2 w-full">
+    <header className="-z-10 -mt-8 md:pb-4 pb-2 w-full bg-white ">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <Link to="#" className="-m-1.5 p-1.5">
+          <Link to="/" className="-m-1.5 p-1.5">
             <img alt="" src={logoNew} width={120} />
           </Link>
         </div>
@@ -95,78 +95,72 @@ export default function NewNavbr() {
             <Bars3Icon aria-hidden="true" className="h-6 w-6" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-          {/* <Popover className="relative">
-                        <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-                            Product
-                            <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
-                        </PopoverButton>
-
-                        <PopoverPanel
-                            transition
-                            className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
-                        >
-                            <div className="p-4">
-                                {products.map((item) => (
-                                    <div
-                                        key={item.name}
-                                        className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
-                                    >
-                                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                            <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
-                                        </div>
-                                        <div className="flex-auto">
-                                            <a to={item.href} className="block font-semibold text-gray-900">
-                                                {item.name}
-                                                <span className="absolute inset-0" />
-                                            </a>
-                                            <p className="mt-1 text-gray-600">{item.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                                {callsToAction.map((item) => (
-                                    <a
-                                        key={item.name}
-                                        to={item.href}
-                                        className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
-                                    >
-                                        <item.icon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
-                                        {item.name}
-                                    </a>
-                                ))}
-                            </div>
-                        </PopoverPanel>
-                    </Popover> */}
+        <PopoverGroup className="hidden lg:flex lg:gap-x-8">
           <Link
             to="/"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
           >
             About
           </Link>
           <Link
             to="/contact"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
           >
             Contact
           </Link>
           <Link
             to="/write"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
           >
             Write
           </Link>
+          {user && (
+            <Link
+              to="/settings"
+              className="text-sm font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
+            >
+              Settings
+            </Link>
+          )}
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {user ? (
-            <img className="topImg" src={userImage} alt="img" srcSet="" /> //{user.profilePic}
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img alt="Tailwind CSS Navbar component" src={userImage} />
+                </div>
+              </div>
+             <div className="shadow-xl">
+             <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-white shadow-xl text-black rounded-box z-[1] mt-3 w-32 p-2 "
+              >
+                {/* <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge bg-gray-100 border-gray-100">New</span>
+                  </a>
+                </li> */}
+                <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
+                  <a >Settings</a>
+                </li>
+                <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
+                  <a>Logout</a>
+                </li>
+              </ul>
+             </div>
+            </div> //{user.profilePic}
           ) : (
             <>
               <Link className="topListItem link" to="/login">
@@ -232,16 +226,26 @@ export default function NewNavbr() {
                   Write
                 </Link>
                 <Link
-                  className="topListItem link"
-                  to="login"
+                  className="topListItem link "
+                  to="/login"
                   onClick={handelLogout}
                 >
-                  {user && "Logout"}
+                  {user && (
+                    <div className="text-black font-semibold mt-2">Logout </div>
+                  )}
                 </Link>
               </div>
-              <div className="py-6">
+              <div className="py-2">
                 {user ? (
-                  <img className="topImg" src={userImage} alt="img" srcSet="" /> //{user.profilePic}
+                  <Link  to="/settings" className=""> 
+                    {" "}
+                    <img
+                      className="topImg"
+                      src={userImage}
+                      alt="img"
+                      srcSet=""
+                    />
+                  </Link> //{user.profilePic}
                 ) : (
                   <>
                     <Link className="topListItem link" to="login">

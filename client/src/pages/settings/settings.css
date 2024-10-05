@@ -54,11 +54,7 @@
 
 }
 .settingsForm >input{
-    color: gray;
-    margin: 10px 0px;
-    border:none;
-    height: 30px;
-    border-bottom: 1px solid lightgray;
+    
 }
 .settingsSubmit{
     width: 150px;

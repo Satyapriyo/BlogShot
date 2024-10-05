@@ -27,11 +27,11 @@ const Login = () => {
   console.log(isFetching);
   return (
     <div className="">
-      <div className="w-screen h-full flex items-center justify-center bg-gray-50 sm:px-6 lg:px-8">
+      <div className="w-screen h-full flex items-center justify-center -mt-10 bg-gray-100 sm:px-6 lg:px-8">
         <div className="relative py-3 sm:max-w-xs sm:mx-auto">
           <form
             onSubmit={handleSubmit}
-            className="min-h-96 px-8 py-6 mt-20 text-left bg-white  rounded-xl shadow-xl"
+            className="min-h-96 px-8 py-6 mt-20 text-left bg-white  rounded-xl shadow-lg"
           >
             <div className="flex flex-col justify-center items-center h-full select-none">
               <div className="flex flex-col items-center justify-center gap-2 mb-8">

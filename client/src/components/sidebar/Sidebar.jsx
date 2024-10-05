@@ -16,14 +16,15 @@ const Sidebar = () => {
     getCats();
   }, []);
   return (
-    <div className="sidebar md:block hidden">
+    <div className="sidebar md:block hidden text-gray-700 h-full">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME </span>
         <img src={SidebarImg} alt="" />
         <p>
           A next-gen blogging site uses React.js for faster load times and better
           SEO. Features include AI-powered content recommendations, interactive
-          elements, and PWA support for offline access.Real-time collaboration, and flexible monetization empower
+          elements, and PWA support for offline access. <br /> <br />
+          Real-time collaboration, and flexible monetization empower
           creators, while community features enhance engagement, creating an
           immersive experience for all users.
         </p>
@@ -33,7 +34,7 @@ const Sidebar = () => {
         <div className="sidebarList flex space-x-3 text-left">
           {cats.map((c) => (
             <Link key={c._id} className="link" to={`/?cat=${c.name}`}>
-              <li className="text-xl px-6 py-2 rounded-2xl  text-gray-500 bg-slate-200">
+              <li className="text-xl px-6 py-2 rounded-2xl  text-gray-700 bg-gray-200">
                 {c.name}
               </li>
             </Link>
