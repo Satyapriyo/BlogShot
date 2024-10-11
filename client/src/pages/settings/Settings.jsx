@@ -5,7 +5,7 @@ import userImage  from "../../assets/profile-default.svg";
 import Sidebar from "../../components/sidebar/Sidebar";
 const Settings = () => {
   return (
-    <div className="settings -mt-10 bg-gray-100">
+    <div className="settings bg-gray-100">
       <div className="settingsWrapper">
         <div className="settingsTitle  md:mb-10 mb-10">
           <span className="text-gray-700 md:text-xl font-medium ">

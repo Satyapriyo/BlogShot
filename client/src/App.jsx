@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import "./App.css";
-import Navbar from "../src/components/Navbar/Navbar";
+// import Navbar from "../src/components/Navbar/Navbar";
+
 import Home from "../src/pages/home/Home";
 import Single from "./pages/single/Single";
 import Write from "../src/pages/write/Write";
@@ -16,8 +17,9 @@ import Contact from "./pages/Contact/Contact";
 import Blogs from "./components/Blogs/Blogs";
 import NewNavbr from "./components/NewNavbar/NewNavbar";
 import Loading from "./pages/Loading/index";
+import NewWrite from "./pages/NewWrite";
+import NewRegister from "./pages/NewRegister";
 function App() {
-
   const { user } = useContext(Context);
   useEffect(() => {
     const lenis = new Lenis();
@@ -25,18 +27,17 @@ function App() {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-    
+
     requestAnimationFrame(raf);
-    
   }, []);
-  
 
   return (
     <>
-      {/* <Navbar /> */}
       <NewNavbr />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/newregister" element={<NewRegister />} />
+        <Route path="/newwrite" element={<NewWrite />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

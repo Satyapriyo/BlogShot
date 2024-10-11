@@ -14,7 +14,7 @@ const stats = [
 import Footer from "../../components/Footer/Footer";
 export default function About() {
   return (
-    <div className="-mt-12">
+    <div className="">
       <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
         <img
           alt=""
