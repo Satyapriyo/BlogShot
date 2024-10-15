@@ -1,6 +1,28 @@
-import React from "react";
+import {
+  EditorBubble,
+  EditorBubbleItem,
+  EditorCommand,
+  EditorCommandItem,
+  EditorContent,
+  EditorRoot,
+} from "novel";
 
 const NewWrite = () => {
-  return <div>weriteNew</div>;
+  return (
+    <EditorRoot>
+      <EditorContent>
+        <EditorCommand>
+          <EditorCommandItem />
+          <EditorCommandItem />
+          <EditorCommandItem />
+        </EditorCommand>
+        <EditorBubble>
+          <EditorBubbleItem />
+          <EditorBubbleItem />
+          <EditorBubbleItem />
+        </EditorBubble>
+      </EditorContent>
+    </EditorRoot>
+  );
 };
 export default NewWrite;

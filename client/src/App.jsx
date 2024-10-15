@@ -47,12 +47,7 @@ function App() {
         <Route path="write" element={user ? <Write /> : <Register />} />
         <Route path="post/:postid" element={<Single />} />
       </Routes>
-      {/* <Home /> */}
-      {/* <Single/> */}
-      {/* <Write/> */}
-      {/* <Settings /> */}
-      {/* <Login/> */}
-      {/* <Register/> */}
+     
     </>
   );
 }
