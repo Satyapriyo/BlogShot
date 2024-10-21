@@ -3,10 +3,11 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const Post = require("../models/Post");
+const { verifyToken } = require("../middleware/auth");
 
 //UPDATE
 // TODO: try to implement using jsonwebtoken
-router.put("/:id", async (req, res) => {
+router.put("/:id", verifyToken, async (req, res) => {
   if (req.body.userId == req.params.id) {
     if (req.body.password) {
       const salt = await bcrypt.genSalt(10);
