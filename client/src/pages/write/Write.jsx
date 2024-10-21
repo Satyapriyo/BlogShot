@@ -27,16 +27,18 @@ const Write = () => {
       }
     }
     try {
-      const res = await axios.post("https://blog-api-or6z.onrender.com/api/post", newPost);
+      const res = await axios.post(
+        "https://blog-api-or6z.onrender.com/api/post",
+        newPost
+      );
       window.location.replace("/post/" + res.data._id);
       console.log(res);
     } catch (err) {
       console.log("something wrong\n");
     }
   };
-  // "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   return (
-    <div className="write">
+    <div className="write bg-black">
       {file && (
         <img
           src={URL.createObjectURL(file)}
@@ -44,8 +46,8 @@ const Write = () => {
           alt="helloBaby"
         />
       )}
-      <form className="writeForm" onSubmit={handleSubmit}>
-        <div className="writeFormGroup">
+      <form className="writeForm bg-white" onSubmit={handleSubmit}>
+        <div className="writeFormGroup flex justify-evenly">
           <label htmlFor="fileInput">
             <i className="writeIcon fa-solid fa-plus"></i>
           </label>
@@ -62,23 +64,23 @@ const Write = () => {
           />
           <input
             type="text"
-            placeholder="title"
+            placeholder="Title"
             name=""
             id=""
             autoFocus={true}
-            className="writeInput"
+            className="writeInput bg-white rounded-lg"
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div className="writeFormGroup">
+        <div className="writeFormGroup mt-10 pl-28">
           <textarea
             placeholder="Tell your story......"
-            className="writeInput writeText"
+            className="writeInput bg-white rounded-xl writeText"
             type="text"
             onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
-        <button className="writeSubmit" type="submit">
+        <button className="writeSubmit btn" type="submit">
           Publish
         </button>
       </form>

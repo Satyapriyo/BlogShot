@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const Register = () => {
+const NewRegister = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ const Register = () => {
   return (
     <div className="bg-white">
       <div className="">
-        <div className="w-full  flex items-center justify-center h-[100vh]  bg-gray-100 sm:px-6 lg:px-8">
+        <div className="w-full  flex items-center justify-center h-[100vh] -mt-10  bg-gray-100 sm:px-6 lg:px-8">
           <div className="relative py-3 -mt-56 md:-mt-52 sm:max-w-xs sm:mx-auto">
             <form
               onSubmit={handleSubmit}
@@ -47,14 +47,14 @@ const Register = () => {
             >
               <div className="flex flex-col justify-center items-center h-full select-none">
                 <div className="flex flex-col items-center justify-center gap-2 mb-8">
-                  <a href="/" target="_blank">
+                  <a href="https://amethgalarcio.web.app/" target="_blank">
                     <img
                       src="https://amethgalarcio.web.app/assets/logo-42fde28c.svg"
                       className="w-8"
                     />
                   </a>
-                  <p className="m-0 text-[16px] font-semibold text-gray-700">
-                    Create an Account
+                  <p className="m-0 text-[16px] font-semibold ">
+                    Login to your Account
                   </p>
                   <span className="m-0 text-xs max-w-[90%] text-center text-[#8B8E98]">
                     Get started with our app, just start section and enjoy
@@ -67,8 +67,8 @@ const Register = () => {
                   </label>
                   <input
                     onChange={(e) => setUsername(e.target.value)}
-                    className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none "
-                    placeholder="abc"
+                    className="border bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none "
+                    placeholder="Username"
                   />
                 </div>
                 <div className="w-full flex flex-col gap-2">
@@ -78,8 +78,8 @@ const Register = () => {
                   <input
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none "
-                    placeholder="abc@mail.com"
+                    className="border bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none "
+                    placeholder="Username"
                   />
                 </div>
               </div>
@@ -90,7 +90,7 @@ const Register = () => {
                 <input
                   onChange={(e) => setPassword(e.target.value)}
                   type="password"
-                  className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none"
+                  className="border bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none"
                   placeholder="••••••••"
                 />
               </div>
@@ -120,4 +120,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default NewRegister;

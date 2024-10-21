@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import userImage from "../../assets/profile-default.svg";
 import logoNew from "../../assets/Newlogo.svg";
+
 const Navbar = () => {
   const { user, dispatch } = useContext(Context);
   const handelLogout = () => {
@@ -41,7 +42,7 @@ const Navbar = () => {
             <Link className="topListItem link" to="login">
               Login
             </Link>{" "}
-            <Link className="topListItem link" to="register">
+            <Link className="topListItem link" to="/register">
               Register
             </Link>
           </>

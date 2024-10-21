@@ -3,9 +3,9 @@ import Footer from "../../components/Footer/Footer";
 const Contact = () => {
   return (
     <div>
-      <div className="relative flex items-top justify-center min-h-screen bg-white sm:items-center sm:pt-0">
+      <div className="relative flex items-top min-h-screen bg-white sm:items-center sm:pt-0">
         <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
-          <div className="mt-8 overflow-hidden">
+          <div className=" overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-6 mr-2 bg-gray-100 sm:rounded-lg">
                 <h1 className="text-4xl sm:text-5xl text-gray-800  font-extrabold tracking-tight">
@@ -119,18 +119,18 @@ const Contact = () => {
                   <label for="tel" className="hidden">
                     Number
                   </label>
-                  <input
+                  <textarea
                     type="tel"
                     name="tel"
                     id="tel"
-                    placeholder="Telephone Number"
+                    placeholder="Tell about your experience"
                     className="w-100 mt-2 py-3 px-3 rounded-lg bg-white  border border-gray-400  text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="md:w-32 bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"
+                  className="md:w-32 bg-gray-700 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-gray-600 transition ease-in-out duration-300"
                 >
                   Submit
                 </button>

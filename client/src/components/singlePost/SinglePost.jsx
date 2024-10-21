@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./singlePost.css";
 import { Context } from "../../context/Context";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
@@ -13,6 +13,9 @@ const SinglePost = () => {
   const pf = "https://blog-api-or6z.onrender.com/images/";
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
+  if (!user) {
+    window.location.replace("/login");
+  }
 
   useEffect(() => {
     const getPost = async () => {
@@ -59,9 +62,9 @@ const SinglePost = () => {
             </Link>
           </span>
         </div>
-        <p className="singlePostDesc">
+        <div className="singlePostDesc">
           <ReactMarkdown>{post.desc}</ReactMarkdown>
-        </p>
+        </div>
       </div>
     </div>
   );

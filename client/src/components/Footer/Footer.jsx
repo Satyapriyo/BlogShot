@@ -3,7 +3,7 @@ import logo from "../../assets/Newlogo.svg";
 const Footer = () => {
   return (
     <div>
-      <footer className="w-full py-14">
+      <footer className="w-full sticky z-40 bg-white text-black">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <a href="/" className="flex justify-center ">
@@ -11,27 +11,27 @@ const Footer = () => {
             </a>
             <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-2 mb-10 border-b border-gray-200">
               <li>
-                <a href="#" className="text-gray-800 hover:text-gray-900">
+                <a href="#" className=" hover:text-gray-500">
                   Docs
                 </a>
               </li>
               <li>
-                <a href="#" className=" text-gray-800 hover:text-gray-900">
+                <a href="#" className="  hover:text-gray-500">
                   Products
                 </a>
               </li>
               <li>
-                <a href="#" className=" text-gray-800 hover:text-gray-900">
+                <a href="#" className="  hover:text-gray-500">
                   Resources
                 </a>
               </li>
               <li>
-                <a href="#" className=" text-gray-800 hover:text-gray-900">
+                <a href="#" className="  hover:text-gray-500">
                   Blogs
                 </a>
               </li>
               <li>
-                <a href="#" className=" text-gray-800 hover:text-gray-900">
+                <a href="#" className="  hover:text-gray-500">
                   Support
                 </a>
               </li>
@@ -39,7 +39,7 @@ const Footer = () => {
             <div className="flex space-x-10 justify-center items-center mb-14">
               <a
                 href="#"
-                className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
+                className="block transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
                   className="w-[1.688rem] h-[1.688rem]"
@@ -55,7 +55,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
+                className="block transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
                   className="w-[1.688rem] h-[1.688rem] "
@@ -71,7 +71,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
+                className="block  transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
                   className="w-[0.938rem] h-[1.625rem]"
@@ -87,7 +87,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 "
+                className="block transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
                   className="w-[1.875rem] h-[1.375rem]"
@@ -104,7 +104,7 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-            <span className="text-lg text-gray-500 text-center block">
+            <span className="text-lg  pb-2 text-center block">
               ©<a href="https://pagedone.io/">BlogShot</a> 2024, All rights
               reserved.
             </span>
