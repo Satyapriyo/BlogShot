@@ -12,8 +12,14 @@ const path = require("path");
 
 require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))
+const corsOptions = {
+  origin: 'http://localhost:5173',  // Replace with the frontend origin
+  credentials: true,  // This allows the server to accept cookies or credentials
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Headers allowed
+};
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 // app.use(cors({
 //   origin: ["https://blog-shot-api.vercel.app/api"],
 //   methods: ["POST", "GET", "PUT", "DELETE"],

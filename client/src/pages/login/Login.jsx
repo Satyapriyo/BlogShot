@@ -17,19 +17,19 @@ const Login = () => {
         {
           username: userRef.current.value,
           password: passwordRef.current.value,
-        }
+        },
+        { withCredentials: true }
       );
       toast.success("Successfully Logged In.");
       setTimeout(() => {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       }, [2000]);
     } catch (err) {
-      console.log(err);
-      toast.error("Username or Password wrong.");
+      toast.error("Username or Password wrong." + err);
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
-  console.log(isFetching);
+  
   return (
     <div className="">
       <div className="w-full  flex items-center justify-center h-[100vh]  bg-gray-100 sm:px-6 lg:px-8">

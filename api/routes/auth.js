@@ -25,26 +25,30 @@ router.post("/register", async (req, res) => {
 
 //LOGIN
 router.post("/login", async (req, res) => {
+
+
   try {
     const user = await User.findOne({
       username: req.body.username,
     });
-    !user && res.status(400).json("wrong credentials");
+
+    !user && res.status(400).json("wrong username");
     const validate = await bcrypt.compare(req.body.password, user.password);
-    !validate && res.status(400).json("wrong credentials");
+
+    !validate && res.status(400).json("wrong password");
     const { password, ...others } = user._doc;
     const token = jwt.sign(
       { id: user._id, username: user.username },
       jwtSecret,
       { expiresIn: "1h" }
     );
+
     res.cookie("token", token, {
       httpOnly: true, // Prevent JavaScript access to the cookie
       secure: process.env.NODE_ENV === "production", // Use only over HTTPS in production
-      sameSite: "strict", // Mitigate CSRF
       maxAge: 3600000, // Token expires in 1 hour
     });
-    res.status(200).json({ token, message: "Login Success." });
+    res.status(200).json({ user, token, message: "Login Success." });
   } catch (err) {
     res.status(500).json(err);
   }
