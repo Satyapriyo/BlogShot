@@ -1,8 +1,9 @@
 import React from "react";
 import "./settings.css";
 import {} from "@heroicons/react";
-import userImage  from "../../assets/profile-default.svg";
+import userImage from "../../assets/profile-default.svg";
 import Sidebar from "../../components/sidebar/Sidebar";
+
 const Settings = () => {
   return (
     <div className="settings bg-gray-100">
@@ -40,7 +41,6 @@ const Settings = () => {
             </label>
             <input type="file" id="fileInput" style={{ display: "none" }} />
           </div>
-          
 
           <label htmlFor="" className="text-gray-700">
             Password
@@ -66,6 +66,8 @@ const Settings = () => {
         </form>
       </div>
       <Sidebar />
+
+  
     </div>
   );
 };

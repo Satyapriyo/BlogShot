@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const userRef = useRef();
   const passwordRef = useRef();
+  const url = import.meta.env.VITE_API_URL;
   const { user, dispatch, isFetching } = useContext(Context);
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(
-        "https://blog-api-or6z.onrender.com/api/auth/login",
+        `${url}/auth/login`,
         {
           username: userRef.current.value,
           password: passwordRef.current.value,
@@ -21,15 +23,17 @@ const Login = () => {
         { withCredentials: true }
       );
       toast.success("Successfully Logged In.");
+      const decoded = jwtDecode(res.data.token);
       setTimeout(() => {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      }, [2000]);
+        dispatch({ type: "LOGIN_SUCCESS", payload: decoded });
+      }, [1000]);
+      console.log(decoded);
     } catch (err) {
       toast.error("Username or Password wrong." + err);
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
-  
+
   return (
     <div className="">
       <div className="w-full  flex items-center justify-center h-[100vh]  bg-gray-100 sm:px-6 lg:px-8">

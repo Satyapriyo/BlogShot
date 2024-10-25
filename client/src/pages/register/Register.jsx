@@ -8,20 +8,18 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
+  const url = import.meta.env.VITE_API_URL;
   const [isFetching, setIsFetching] = useState(false);
   const handleSubmit = async (e) => {
     setIsFetching(true);
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post(
-        "https://blog-api-or6z.onrender.com/api/auth/register",
-        {
-          username,
-          email,
-          password,
-        }
-      );
+      const res = await axios.post(`${url}/auth/register`, {
+        username,
+        email,
+        password,
+      });
       console.log(res);
       toast.success("Account created successfully");
       setTimeout(() => {

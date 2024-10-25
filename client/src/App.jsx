@@ -1,7 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import "./App.css";
-// import Navbar from "../src/components/Navbar/Navbar";
-
 import Home from "../src/pages/home/Home";
 import Single from "./pages/single/Single";
 import Write from "../src/pages/write/Write";

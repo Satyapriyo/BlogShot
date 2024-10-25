@@ -6,14 +6,14 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
+  const url = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(
-        "https://blog-api-or6z.onrender.com/api/post" + search
-      );
+      const res = await axios.get(`${url}/post` + search);
       setPosts(res.data);
       // console.log(res);
     };

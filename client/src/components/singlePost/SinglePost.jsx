@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 
 const SinglePost = () => {
   const location = useLocation();
+  const url = import.meta.env.VITE_API_URL;
   console.log(location);
   const { user } = useContext(Context);
   const pf = "https://blog-api-or6z.onrender.com/images/";
@@ -19,9 +20,7 @@ const SinglePost = () => {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get(
-        "https://blog-api-or6z.onrender.com/api/post/" + path
-      );
+      const res = await axios.get(`${url}/post/` + path);
       setPost(res.data);
     };
     getPost();
