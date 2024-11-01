@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-
+import logo from "../../../public/b.png";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +47,7 @@ const Register = () => {
                 <div className="flex flex-col items-center justify-center gap-2 mb-8">
                   <a href="/" target="_blank">
                     <img
-                      src="https://amethgalarcio.web.app/assets/logo-42fde28c.svg"
+                      src={logo}
                       className="w-8"
                     />
                   </a>
@@ -104,7 +104,7 @@ const Register = () => {
                 <button
                   type="submit"
                   disabled={isFetching}
-                  className="py-1 px-8 bg-blue-500 hover:bg-blue-800 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none"
+                  className="py-1 px-8 bg-blue-500 btn-slate hover:bg-blue-800 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none"
                 >
                   SignUp
                 </button>

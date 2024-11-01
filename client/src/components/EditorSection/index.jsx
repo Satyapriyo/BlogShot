@@ -1,16 +1,18 @@
 import { Editor } from "novel-lightweight";
-import { useState } from "react";
-const EditorSection = (...props) => {
+import { useState, useEffect } from "react"; // Choose a theme, e.g., "github.css"
+import CodeBlock from "@tiptap/extension-code-block";
+import "./style.css";
+const EditorSection = (props) => {
   const [data, setData] = useState("");
-  console.log(data);
   return (
     <Editor
       initialValue={data}
       disableLocalStorage={true}
-      immediatelyRender={true}
-      readOnly={true}
+      immediatelyRender={false}
+      defaultValue=""
+      editable={false}
       onUpdate={(editor) => {
-        setData(editor?.storage.markdown.getMarkdown());
+        props.setDesc(editor?.storage.markdown.getMarkdown());
       }}
       {...props}
     />

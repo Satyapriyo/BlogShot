@@ -15,6 +15,7 @@ const Sidebar = () => {
     };
     getCats();
   }, []);
+  console.log(cats)
   return (
     <div className="sidebar md:block hidden text-gray-700 h-full">
       <div className="sidebarItem">
@@ -33,7 +34,7 @@ const Sidebar = () => {
       <div className="sidebarItem text-left">
         <div className="sidebarTitle text-left">CATAGORIES</div>
         <div className="sidebarList flex space-x-3 text-left">
-          {cats.map((c) => (
+          {cats && cats.length && cats.map((c) => (
             <Link key={c._id} className="link" to={`/?cat=${c.name}`}>
               <li className="text-xl px-6 py-2 rounded-2xl  text-gray-700 bg-gray-200">
                 {c.name}

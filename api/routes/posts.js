@@ -7,6 +7,7 @@ const Post = require("../models/Post");
 //CREATE NEW POST
 router.post("/", async (req, res) => {
   const newPost = new Post(req.body);
+
   try {
     const savePost = await newPost.save();
     res.status(201).json(savePost);

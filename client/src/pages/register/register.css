@@ -12,14 +12,17 @@
 .registerTitle {
   font-size: 50px;
 }
+
 .registerForm {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
+
 .registerForm > input {
   margin: 10px 0px;
 }
+
 .registerInput {
   padding: 10px;
   background: #f5f5f5;

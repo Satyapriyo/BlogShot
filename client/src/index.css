@@ -10,3 +10,10 @@
 body{
   background: #ffffff;
 }
+.fontnew {
+  font-family: "Josefin Sans", sans-serif;
+}
+.btn-slate {
+  background: rgb(18, 18, 18) !important;
+}
+

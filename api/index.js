@@ -12,11 +12,10 @@ const path = require("path");
 
 require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))
+console.log(process.env.CORS_URL);
 const corsOptions = {
-  origin: 'http://localhost:5173',  // Replace with the frontend origin
-  credentials: true,  // This allows the server to accept cookies or credentials
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'],  // Headers allowed
+  origin: process.env.CORS_URL, // Replace with the frontend origin
+  credentials: true, // This allows the server to accept cookies or credentials
 };
 app.use(express.json());
 app.use(cors(corsOptions));

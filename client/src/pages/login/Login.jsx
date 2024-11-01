@@ -5,6 +5,7 @@ import { Context } from "../../context/Context";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
+import logo from "../../../public/b.png"
 const Login = () => {
   const userRef = useRef();
   const passwordRef = useRef();
@@ -46,7 +47,7 @@ const Login = () => {
               <div className="flex flex-col items-center justify-center gap-2 mb-8">
                 <a href="/" target="_blank">
                   <img
-                    src="https://amethgalarcio.web.app/assets/logo-42fde28c.svg"
+                    src={logo}
                     className="w-8"
                   />
                 </a>
@@ -92,7 +93,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={isFetching}
-                className="py-1 px-8 bg-blue-500 hover:bg-blue-800 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none"
+                className="py-1 px-8 bg-blue-500 hover:bg-blue-800 focus:ring-offset-blue-200 text-white w-full btn-slate transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none"
               >
                 Login
               </button>
