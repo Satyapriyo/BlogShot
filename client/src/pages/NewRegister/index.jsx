@@ -20,8 +20,7 @@ const NewRegister = () => {
           username,
           email,
           password,
-        }
-      );
+      });
       console.log(res);
       toast.success("Account created successfully");
       setTimeout(() => {

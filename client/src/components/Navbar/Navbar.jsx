@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import userImage from "../../assets/profile-default.svg";
 import logoNew from "../../assets/Newlogo.svg";
+const url = import.meta.env.VITE_API_URL;
 
 const Navbar = () => {
   const { user, dispatch } = useContext(Context);
   const handelLogout = () => {
+    const res = axios.post(`${url}/auth/logout`);
+    console.log(res.json());
     dispatch({ type: "LOGOUT" });
   };
   return (
@@ -20,16 +23,16 @@ const Navbar = () => {
           <Link className="link topListItem" to="/">
             Home
           </Link>
-          <Link className="topListItem link" to="about">
+          <Link className="topListItem link" to="/about">
             About
           </Link>
-          <Link className="topListItem link" to="contact">
+          <Link className="topListItem link" to="/contact">
             Contact
           </Link>
-          <Link className="topListItem link" to="write">
+          <Link className="topListItem link" to="/newwrite">
             Write
           </Link>
-          <Link className="topListItem link" to="login" onClick={handelLogout}>
+          <Link className="topListItem link" to="/login" onClick={handelLogout}>
             {user && "Logout"}
           </Link>
         </ul>

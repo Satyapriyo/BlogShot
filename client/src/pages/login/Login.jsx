@@ -4,32 +4,37 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
+import logo from "../../../public/b.png"
 const Login = () => {
   const userRef = useRef();
   const passwordRef = useRef();
+  const url = import.meta.env.VITE_API_URL;
   const { user, dispatch, isFetching } = useContext(Context);
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(
-        "https://blog-api-or6z.onrender.com/api/auth/login",
+        `${url}/auth/login`,
         {
           username: userRef.current.value,
           password: passwordRef.current.value,
-        }
+        },
+        { withCredentials: true }
       );
       toast.success("Successfully Logged In.");
+      const decoded = jwtDecode(res.data.token);
       setTimeout(() => {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      }, [2000]);
+        dispatch({ type: "LOGIN_SUCCESS", payload: decoded });
+      }, [1000]);
+      console.log(decoded);
     } catch (err) {
-      console.log(err);
-      toast.error("Username or Password wrong.");
+      toast.error("Username or Password wrong." + err);
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
-  console.log(isFetching);
+
   return (
     <div className="">
       <div className="w-full  flex items-center justify-center h-[100vh]  bg-gray-100 sm:px-6 lg:px-8">
@@ -42,7 +47,7 @@ const Login = () => {
               <div className="flex flex-col items-center justify-center gap-2 mb-8">
                 <a href="/" target="_blank">
                   <img
-                    src="https://amethgalarcio.web.app/assets/logo-42fde28c.svg"
+                    src={logo}
                     className="w-8"
                   />
                 </a>
@@ -88,7 +93,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={isFetching}
-                className="py-1 px-8 bg-blue-500 hover:bg-blue-800 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none"
+                className="py-1 px-8 bg-blue-500 hover:bg-blue-800 focus:ring-offset-blue-200 text-white w-full btn-slate transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none"
               >
                 Login
               </button>

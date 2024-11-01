@@ -12,14 +12,18 @@ const path = require("path");
 
 require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))
+console.log(process.env.CORS_URL);
+const corsOptions = {
+  origin: process.env.CORS_URL, // Replace with the frontend origin
+  credentials: true, // This allows the server to accept cookies or credentials
+};
 app.use(express.json());
-app.use(cors())
+app.use(cors(corsOptions));
 // app.use(cors({
 //   origin: ["https://blog-shot-api.vercel.app/api"],
 //   methods: ["POST", "GET", "PUT", "DELETE"],
 //   credentials: true,
 // }));
-
 
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
@@ -55,4 +59,4 @@ app.listen("3003", () => {
 });
 app.get("/", (req, res) => {
   res.send("server is working 🚀🚀");
-})
+});

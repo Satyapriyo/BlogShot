@@ -12,6 +12,11 @@ dist
 dist-ssr
 .local.env
 .env
+/client/.env
+/api/.env
+
+.vscode/
+
 
 # Editor directories and files
 .vscode/*
@@ -25,3 +30,4 @@ dist-ssr
 *.sln
 *.sw?
 node_modules/
+

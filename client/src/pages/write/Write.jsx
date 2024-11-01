@@ -7,6 +7,7 @@ const Write = () => {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
+  console.log(user.username);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
@@ -43,7 +44,7 @@ const Write = () => {
         <img
           src={URL.createObjectURL(file)}
           className="writeImg"
-          alt="helloBaby"
+          alt="Image File"
         />
       )}
       <form className="writeForm bg-white" onSubmit={handleSubmit}>
@@ -80,10 +81,13 @@ const Write = () => {
             onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
-        <button className="writeSubmit btn" type="submit">
-          Publish
-        </button>
       </form>
+      <button
+        className="writeSubmit text-white hover:shadow-2xl hover:scale-105 duration-300  px-3 py-1 rounded-md"
+        type="submit"
+      >
+        Publish
+      </button>
     </div>
   );
 };

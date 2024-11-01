@@ -61,7 +61,7 @@ export default function NewNavbr() {
             Contact
           </Link>
           <Link
-            to="/write"
+            to="/newwrite"
             className="text-sm font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
           >
             Write
@@ -99,9 +99,7 @@ export default function NewNavbr() {
                   </a>
                 </li> */}
                   <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
-                  <Link to="/settings" >
-                      Settings
-                    </Link>
+                    <Link to="/settings">Settings</Link>
                   </li>
                   <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
                     <Link to="/login" onClick={handelLogout}>
