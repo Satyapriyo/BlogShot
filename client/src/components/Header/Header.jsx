@@ -7,10 +7,10 @@ const Header = () => {
       <div className="header bg-white">
         <img className="headerImg -mt-16 " src={heroImg} alt="" />
         <div className="headerTitles">
-          <span className="-mt-[300px] shadow md:text-[100px] text-3xl font-bold">
+          <span className="-mt-[300px] shadow md:text-[100px] text-5xl font-bold">
             BlogShot
           </span>
-          <span className="mt-16 text-black md:text-xl text-lg">
+          <span className="md:mt-16 mt-8  text-black md:text-xl text-md">
             Where stories connect and ideas ignite—welcome to your blogging
             haven!
           </span>
