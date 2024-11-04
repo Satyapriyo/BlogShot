@@ -7,6 +7,7 @@ import axios from "axios";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import ReactMarkdown from "react-markdown";
+import gradient from "random-gradient"
 
 const SinglePost = () => {
   const location = useLocation();
@@ -15,10 +16,6 @@ const SinglePost = () => {
   const pf = "https://blog-api-or6z.onrender.com/images/";
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
-  if (!user) {
-    window.location.replace("/login");
-  }
-
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get(`${url}/post/` + path);
@@ -26,16 +23,7 @@ const SinglePost = () => {
     };
     getPost();
   }, [path]);
-  const handleDelete = async (e) => {
-    try {
-      await axios.delete(`/post/${path}`, {
-        data: { username: user.username },
-      });
-      window.location.replace("/");
-    } catch (err) {
-      console.log("not working.....!");
-    }
-  };
+  console.log(post)
   const renderers = {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || "");
@@ -55,12 +43,53 @@ const SinglePost = () => {
       );
     },
   };
+  if (!user) {
+    return (
+      <div className="singlePost fontnew">
+        <div className="singlePostWrapper">
+          {post.photo == "" ? <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[300px]"></div> : <img className="singlePostImg" src={pf + post.photo} alt="" />}
+          <h1 className="siglePostTitle font-bold text-5xl mt-10 mb-10 fontnew ">
+            <div className="text-black">{post.title}</div>
+
+          </h1>
+
+          <div className="singlePostInfo">
+            <span>
+              Author:
+              <Link className="link" to={`/?user=${post.username}`}>
+                <b className="fontnew">{post.username}</b>{" "}
+              </Link>
+            </span>
+          </div>
+          <div className="singlePostDesc wysiwyg wysiwyg-slate lg:wysiwyg-xl fontnew  max-w-[70vw]">
+            <ReactMarkdown components={renderers}>{post.desc}</ReactMarkdown>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+
+  const handleDelete = async (e) => {
+    try {
+      if (user) {
+        await axios.delete(`/post/${path}`, {
+          data: { username: user.username },
+        });
+        window.location.replace("/");
+      }
+
+    } catch (err) {
+      console.log("not working.....!");
+    }
+  };
+
   return (
     <div className="singlePost fontnew">
       <div className="singlePostWrapper">
-        <img className="singlePostImg" src={pf + post.photo} alt="" />
+        {post.photo == "" ? <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[300px]"></div> : <img className="singlePostImg" src={pf + post.photo} alt="" />}
         <h1 className="siglePostTitle font-bold text-5xl mt-10 mb-10 fontnew ">
-          {post.title}
+          <div className="text-black">{post.title}</div>
           {post.username === user.username && (
             <div className="singlePostEditContainer">
               <i className="singlePostIcon fa-regular fa-pen-to-square"></i>

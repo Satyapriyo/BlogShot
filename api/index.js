@@ -19,11 +19,6 @@ const corsOptions = {
 };
 app.use(express.json());
 app.use(cors(corsOptions));
-// app.use(cors({
-//   origin: ["https://blog-shot-api.vercel.app/api"],
-//   methods: ["POST", "GET", "PUT", "DELETE"],
-//   credentials: true,
-// }));
 
 app.use("/images", express.static(path.join(__dirname, "/images")));
 

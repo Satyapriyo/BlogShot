@@ -77,38 +77,43 @@ export default function NewNavbr() {
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {user ? (
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img alt="Tailwind CSS Navbar component" src={userImage} />
-                </div>
-              </div>
-              <div className="shadow-xl">
-                <ul
+            <div className="flex">
+              <p className="content-center text-black font-bold"> Hi {user.username}</p>
+              <div className="dropdown dropdown-end">
+                <div
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-white shadow-xl text-black rounded-box z-[1] mt-3 w-32 p-2 "
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar "
                 >
-                  {/* <li>
+
+                  <div className="w-10 rounded-full">
+                    <img alt="Tailwind CSS Navbar component" src={userImage} />
+                  </div>
+                </div>
+                <div className="shadow-xl">
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-white shadow-xl text-black rounded-box z-[1] mt-3 w-32 p-2 "
+                  >
+                    {/* <li>
                   <a className="justify-between">
                     Profile
                     <span className="badge bg-gray-100 border-gray-100">New</span>
                   </a>
                 </li> */}
-                  <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
-                    <Link to="/settings">Settings</Link>
-                  </li>
-                  <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
-                    <Link to="/login" onClick={handelLogout}>
-                      Logout
-                    </Link>
-                  </li>
-                </ul>
+                    <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
+                      <Link to="/settings">Settings</Link>
+                    </li>
+                    <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
+                      <Link to="/login" onClick={handelLogout}>
+                        Logout
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div> //{user.profilePic}
+            </div>
+            //{user.profilePic}
           ) : (
             <div className="flex space-x-3">
               <Link
@@ -194,6 +199,7 @@ export default function NewNavbr() {
                   <Link to="/settings" className="">
                     {" "}
                     <div className="w-10 rounded-full">
+
                       <img
                         className="topImg"
                         src={userImage}
