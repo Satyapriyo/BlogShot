@@ -30,7 +30,7 @@ const Login = () => {
       }, [1000]);
       console.log(decoded);
     } catch (err) {
-      toast.error("Username or Password wrong." + err);
+      toast.error("Username or Password wrong.");
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };

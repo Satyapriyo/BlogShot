@@ -104,7 +104,7 @@ export default function NewNavbr() {
                     <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
                       <Link to="/settings">Settings</Link>
                     </li>
-                    <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
+                    <li className="hover:bg-slate-100  duration-200 rounded-lg w-28">
                       <Link to="/login" onClick={handelLogout}>
                         Logout
                       </Link>
@@ -117,7 +117,7 @@ export default function NewNavbr() {
           ) : (
             <div className="flex space-x-3">
               <Link
-                className="text-sm font-semibold leading-6 duration-300 bg-gray-700 hover:bg-slate-600 rounded-md px-3.5 py-1.5 text-gray-100"
+                className="text-sm font-semibold leading-6 duration-300 btn-slate hover:bg-slate-600 rounded-md px-3.5 py-1.5 text-gray-100"
                 to="/login"
               >
                 Login
@@ -185,7 +185,7 @@ export default function NewNavbr() {
                   Write
                 </Link>
                 <Link
-                  className="topListItem link "
+                  className="topListItem link btn-slate"
                   to="/login"
                   onClick={handelLogout}
                 >
