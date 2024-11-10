@@ -13,6 +13,9 @@ const NewWrite = () => {
   useEffect(() => {
     Prism.highlightAll(); // Automatically highlights all code blocks
   }, []);
+  if (!user) {
+    window.location.href = "/"
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {

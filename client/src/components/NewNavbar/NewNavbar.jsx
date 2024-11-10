@@ -66,14 +66,7 @@ export default function NewNavbr() {
           >
             Write
           </Link>
-          {user && (
-            <Link
-              to="/settings"
-              className="text-sm font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
-            >
-              Settings
-            </Link>
-          )}
+          
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {user ? (

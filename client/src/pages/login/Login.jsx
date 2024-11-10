@@ -5,7 +5,7 @@ import { Context } from "../../context/Context";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
-import logo from "../../../public/b.png"
+import logo from "../../assets/b.png"
 const Login = () => {
   const userRef = useRef();
   const passwordRef = useRef();

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import logo from "../../../public/b.png";
+import logo from "../../assets/b.png";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
