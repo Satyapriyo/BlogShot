@@ -25,9 +25,6 @@ const SinglePost = () => {
     };
     getPost();
   }, [path]);
-  useEffect(() => {
-    console.log("liked");
-  }, [post.likes]);
   const renderers = {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || "");
@@ -77,7 +74,7 @@ const SinglePost = () => {
             <ReactMarkdown components={renderers}>{post.desc}</ReactMarkdown>
           </div>
           <div className="flex justify-end space-x-2 cursor-pointer">
-            <button onClick={updateLikes} className="text-black text-3xl">
+            <button className="text-black text-3xl">
               <GoHeart />
             </button>
             <p className="text-3xl text-black">{post.likes}</p>
