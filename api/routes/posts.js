@@ -40,6 +40,14 @@ router.put("/:id", async (req, res) => {
     res.status(400).json(err);
   }
 });
+//ADD LIKES
+router.put("/:id/like",async(req,res)=>{
+  const post = await Post.findById(req.params.id);
+  post.likes += 1;
+  const updatedPost = await post.save();
+  res.status(200).json(updatedPost);
+
+})
 //DELETE POST
 router.delete("/:id", async (req, res) => {
   try {
