@@ -1,10 +1,14 @@
 import { useState, useContext, useEffect } from "react";
-import EditorSection from "../../components/EditorSection";
+import { useLocation } from "react-router-dom";
+import BlogEditor from "../../components/BlogEditor/index";
 import { Context } from "../../context/Context";
+
 import Prism from "prismjs";
-import "./style.css";
+// import "./style.css";
 import axios from "axios";
-const NewWrite = () => {
+const EditBlogs = () => {
+  const location = useLocation();
+  console.log(location.pathname.split("/")[2]);
   const { user } = useContext(Context);
   const url = import.meta.env.VITE_API_URL;
   const [title, setTitle] = useState("");
@@ -14,7 +18,7 @@ const NewWrite = () => {
     Prism.highlightAll(); // Automatically highlights all code blocks
   }, []);
   if (!user) {
-    window.location.href = "/"
+    window.location.href = "/";
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +51,10 @@ const NewWrite = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <div className="">
-            <EditorSection setDesc={setDesc} className="w-[70vw] mx-auto text-black" />
+            <BlogEditor
+              setDesc={setDesc}
+              className="w-[70vw] mx-auto text-black"
+            />
           </div>
           <div>
             <input
@@ -68,4 +75,4 @@ const NewWrite = () => {
     </div>
   );
 };
-export default NewWrite;
+export default EditBlogs;

@@ -9,11 +9,13 @@ import Register from "./pages/register/Register";
 import { Route, Routes } from "react-router-dom";
 import SinglePost from "./components/singlePost/SinglePost";
 import About from "./pages/About/About";
+import BlogEditor from "./components/BlogEditor/index";
 import Lenis from "lenis";
 import { Context } from "./context/Context";
 import Contact from "./pages/Contact/Contact";
 import Blogs from "./components/Blogs/Blogs";
 import NewNavbr from "./components/NewNavbar/NewNavbar";
+import EditBlogs from "./pages/EditBlogs";
 import Loading from "./pages/Loading/index";
 import NewWrite from "./pages/NewWrite";
 import NewRegister from "./pages/NewRegister";
@@ -25,7 +27,6 @@ function App() {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
   }, []);
 
@@ -34,6 +35,7 @@ function App() {
       <NewNavbr />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/editor/:postid" element={<EditBlogs />} />
         <Route path="/newregister" element={<NewRegister />} />
         <Route path="/newwrite" element={<NewWrite />} />
         <Route path="/blogs" element={<Blogs />} />
@@ -45,7 +47,6 @@ function App() {
         <Route path="write" element={user ? <Write /> : <Register />} />
         <Route path="post/:postid" element={<Single />} />
       </Routes>
-     
     </>
   );
 }

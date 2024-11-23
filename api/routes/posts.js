@@ -76,11 +76,24 @@ router.get("/:id", async (req, res) => {
     res.status(402).json(err);
   }
 });
+//SEARCH POSTS WITH TITLE
+router.get("/search",async(req,res)=>{
+  const query = req.query.q;
+  try{
+    const posts = await Post.find({title:{$regex:query,$options:"i"}});
+    res.status(200).json(posts)
+  }
+  catch(err){
+    console.log(err)
+  }
+});
 
 //GET ALL POSTS
 router.get("/", async (req, res) => {
   const username = req.query.user;
   const catName = req.query.cat;
+  const searchQuery = req.query.search;
+  
   try {
     let posts;
     if (username) {
@@ -91,12 +104,16 @@ router.get("/", async (req, res) => {
           $in: [catName],
         },
       });
-    } else {
+    } 
+    else if(searchQuery){
+      posts = await Post.find({title:{$regex:searchQuery,$options:"i"}});
+    }
+    else {
       posts = await Post.find();
     }
     res.status(201).json(posts);
   } catch (err) {
-    res.status(402).json(err);
+    res.status(500).json(err);
   }
 });
 

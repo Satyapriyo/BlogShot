@@ -19,6 +19,9 @@ const SinglePost = () => {
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState([]);
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     const getPost = async () => {
       const res = await axios.get(`${url}/post/` + path);
       setPost(res.data);
@@ -83,7 +86,7 @@ const SinglePost = () => {
       </div>
     );
   }
-
+  const handleEdit = () => {};
   const handleDelete = async (e) => {
     try {
       if (user) {
@@ -109,7 +112,17 @@ const SinglePost = () => {
           <div className="text-black">{post.title}</div>
           {post.username === user.username && (
             <div className="singlePostEditContainer">
-              <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
+              <Link
+                to={{
+                  pathname: `/editor/${post._id}`,
+                  state: { initialData: { post } },
+                }}
+              >
+                <i
+                  onClick={handleEdit}
+                  className="singlePostIcon fa-regular fa-pen-to-square"
+                ></i>
+              </Link>
               <i
                 className="singlePostIcon fa-sharp fa-solid fa-trash"
                 onClick={handleDelete}

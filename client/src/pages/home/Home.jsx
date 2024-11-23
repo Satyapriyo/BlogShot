@@ -19,6 +19,14 @@ const Home = () => {
     };
     fetchPosts();
   }, [search]);
+  // useEffect(() => {
+  //   const fetchSearcehPost = async () => {
+  //     console.log(search);
+  //     const res = await axios.get(`${url}/post/?search${search}`);
+  //     setPosts(res.data);
+  //   };
+  //   fetchSearcehPost();
+  // }, [search]);
   return (
     <>
       <Header />

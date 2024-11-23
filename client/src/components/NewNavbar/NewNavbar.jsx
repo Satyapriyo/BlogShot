@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../context/Context";
 import { useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -15,6 +16,13 @@ const callsToAction = [
 
 export default function NewNavbr() {
   const { user, dispatch } = useContext(Context);
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const handleSearch = () => {
+    if (query.trim()) {
+      navigate(`/?search=${query}`);
+    }
+  };
   const handelLogout = () => {
     dispatch({ type: "LOGOUT" });
   };
@@ -62,23 +70,53 @@ export default function NewNavbr() {
           </Link>
           <Link
             to="/newwrite"
-            className="text-sm font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
+            className="text-sm text-center font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
           >
             Write
           </Link>
-          
+          <label className="input input-bordered bg-slate-100 flex items-center gap-2">
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+              hidefocus="true"
+              className="grow text-black"
+              placeholder="Search"
+            />
+            <button type="submit" onClick={handleSearch}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="size-6"
+              >
+                <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
+                <path
+                  fillRule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            <kbd className="kbd kbd-sm bg-slate-50">⌘</kbd>
+            <kbd className="kbd kbd-sm bg-slate-50">K</kbd>
+          </label>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {user ? (
             <div className="flex">
-              <p className="content-center text-black font-bold"> Hi {user.username}</p>
+              <p className="content-center text-black font-bold">
+                {" "}
+                Hi {user.username}
+              </p>
               <div className="dropdown dropdown-end">
                 <div
                   tabIndex={0}
                   role="button"
                   className="btn btn-ghost btn-circle avatar "
                 >
-
                   <div className="w-10 rounded-full">
                     <img alt="Tailwind CSS Navbar component" src={userImage} />
                   </div>
@@ -106,8 +144,8 @@ export default function NewNavbr() {
                 </div>
               </div>
             </div>
-            //{user.profilePic}
           ) : (
+            //{user.profilePic}
             <div className="flex space-x-3">
               <Link
                 className="text-sm font-semibold leading-6 duration-300 btn-slate hover:bg-slate-600 rounded-md px-3.5 py-1.5 text-gray-100"
@@ -192,7 +230,6 @@ export default function NewNavbr() {
                   <Link to="/settings" className="">
                     {" "}
                     <div className="w-10 rounded-full">
-
                       <img
                         className="topImg"
                         src={userImage}
