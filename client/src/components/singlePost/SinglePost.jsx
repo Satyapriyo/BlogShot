@@ -10,6 +10,8 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import ReactMarkdown from "react-markdown";
 // import gradient from "random-gradient"
 
+
+
 const SinglePost = () => {
   const location = useLocation();
   const url = import.meta.env.VITE_API_URL;

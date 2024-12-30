@@ -36,7 +36,7 @@ const Login = () => {
   };
 
   return (
-    <div className="">
+    <div className="absolute top-0 w-[100vw]">
       <div className="w-full  flex items-center justify-center h-[100vh]  bg-gray-100 sm:px-6 lg:px-8">
         <div className="relative py-3 -mt-56 md:-mt-52 sm:max-w-xs sm:mx-auto">
           <form
