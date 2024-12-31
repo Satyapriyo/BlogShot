@@ -29,7 +29,7 @@ export default function NewNavbr() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="md:p-4 p-3 z-50 w-full sticky top-0 bg-gray-50 ">
+    <header className="md:p-4 p-3 z-20 w-full sticky top-0 bg-gray-50 ">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8"

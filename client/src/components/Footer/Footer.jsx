@@ -2,8 +2,8 @@ import React from "react";
 import logo from "../../assets/Newlogo.svg";
 const Footer = () => {
   return (
-    <div>
-      <footer className="w-full sticky z-40 bg-white text-black">
+    <div className=" ">
+      <footer className="w-full  bg-white text-black">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <a href="/" className="flex justify-center ">

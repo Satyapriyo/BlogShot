@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <>
       <div className="header bg-white">
-        <img className="headerImg -mt-16 " src={heroImg} alt="" />
+        <img className="headerImg -mt-20 " src={heroImg} alt="" />
         <div className="headerTitles">
           <span className="-mt-[300px] md:text-[120px] text-5xl font-bold">
             BlogShot

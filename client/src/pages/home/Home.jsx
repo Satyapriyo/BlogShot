@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="home bg-gray-100">
+      <div className="home bg-gray-100 z-10">
         {loading ? <Spinner /> : <Posts posts={posts} />}
         <Sidebar />
       </div>
