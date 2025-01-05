@@ -2,12 +2,12 @@ import React from "react";
 import logo from "../../assets/Newlogo.svg";
 const Footer = () => {
   return (
-    <div className=" ">
+    <div className="">
       <footer className="w-full  bg-white text-black">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <a href="/" className="flex justify-center ">
-              <img src={logo} width={200} alt="" />
+            <a href="/" aria-label="Go to the home page" className="flex justify-center ">
+              <img src={logo} width={200} alt="company logo" />
             </a>
             <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-2 mb-10 border-b border-gray-200">
               <li>
@@ -16,22 +16,38 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="  hover:text-gray-500">
+                <a
+                  href="#"
+                  aria-label="goto products page"
+                  className="products  hover:text-gray-500"
+                >
                   Products
                 </a>
               </li>
               <li>
-                <a href="#" className="  hover:text-gray-500">
+                <a
+                  href="#"
+                  aria-label="goto resourses page"
+                  className="resources  hover:text-gray-500"
+                >
                   Resources
                 </a>
               </li>
               <li>
-                <a href="#" className="  hover:text-gray-500">
+                <a
+                  href="#"
+                  aria-label="goto resources page"
+                  className="blogs  hover:text-gray-500"
+                >
                   Blogs
                 </a>
               </li>
               <li>
-                <a href="#" className="  hover:text-gray-500">
+                <a
+                  href="/contact"
+                  aria-label="goto conatact page"
+                  className="contact  hover:text-gray-500"
+                >
                   Support
                 </a>
               </li>
@@ -39,6 +55,7 @@ const Footer = () => {
             <div className="flex space-x-10 justify-center items-center mb-14">
               <a
                 href="#"
+                aria-label="Go to the twitter"
                 className="block transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
@@ -54,6 +71,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
+                aria-label="Go to the instagram"
                 href="#"
                 className="block transition-all duration-500 hover:text-indigo-600 "
               >
@@ -71,6 +89,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
+                aria-label="Go to the facebook"
                 className="block  transition-all duration-500 hover:text-indigo-600 "
               >
                 <svg
@@ -86,6 +105,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
+                aria-label="Go to the youtube"
                 href="#"
                 className="block transition-all duration-500 hover:text-indigo-600 "
               >

@@ -6,14 +6,14 @@ import logoUser from "../../assets/profile-default.svg";
 const Blogs = ({ post }) => {
   const pf = "https://blog-api-or6z.onrender.com/images/";
   return (
-    <div className="flex hover:shadow-lg md:p-3 cursor-pointer duration-300 overflow-hidden justify-between rounded-lg">
-      <div className="w-[70%]">
+    <div className="flex bg-white hover:shadow-xl shadow-sm duration-200 md:p-3 cursor-pointer duration-300 overflow-hidden justify-between rounded-lg">
+      <div className="w-[70%]"> 
         <div className="">
           {post.catagories.map((p) => {
             <span className="">{p}</span>;
           })}
           <div className="flex justify-between my-8 items-center w-[10%]">
-            <img src={logoUser} width={25} />
+            <img src={logoUser} width={25} alt="creator image" />
             <p className="pl-2">{post.username}</p>
           </div>
           <Link

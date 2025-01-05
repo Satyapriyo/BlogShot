@@ -36,7 +36,7 @@ export default function NewNavbr() {
       >
         <div className="flex lg:flex-1">
           <Link to="/" className=" p-1.5">
-            <img alt="" src={logoNew} width={120} height={10} />
+            <img alt="Blogshot" src={logoNew} width={120} height={10} />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -118,7 +118,7 @@ export default function NewNavbr() {
                   className="btn btn-ghost btn-circle avatar "
                 >
                   <div className="w-10 rounded-full">
-                    <img alt="Tailwind CSS Navbar component" src={userImage} />
+                    <img alt="user" src={userImage} />
                   </div>
                 </div>
                 <div className="shadow-xl">
@@ -174,7 +174,7 @@ export default function NewNavbr() {
             <Link to="#" className=" p-1.5">
               <span className="sr-only">Your Company</span>
               <img
-                alt=""
+                alt="tailwind logo"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 className="h-8 w-auto"
               />
@@ -233,7 +233,7 @@ export default function NewNavbr() {
                       <img
                         className="topImg"
                         src={userImage}
-                        alt="img"
+                        alt="user image"
                         srcSet=""
                       />
                     </div>

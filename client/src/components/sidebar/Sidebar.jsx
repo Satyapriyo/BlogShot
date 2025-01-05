@@ -15,12 +15,14 @@ const Sidebar = () => {
     };
     getCats();
   }, []);
-  console.log(cats)
+  console.log(cats);
   return (
     <div className="sidebar md:block hidden text-gray-700 h-full max-w-[300px]">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME </span>
-        <img src={SidebarImg} alt="" />
+        <div className="img-container">
+          <img src={SidebarImg} width="600" height="600" alt="" />
+        </div>
         <p>
           A next-gen blogging site uses React.js for faster load times and
           better SEO. Features include AI-powered content recommendations,
@@ -34,13 +36,17 @@ const Sidebar = () => {
       <div className="sidebarItem text-left">
         <div className="sidebarTitle text-left">CATAGORIES</div>
         <div className="sidebarList flex space-x-3 text-left">
-          {cats && cats.length && cats.map((c) => (
-            <Link key={c._id} className="link" to={`/?cat=${c.name}`}>
-              <li className="text-xl px-6 py-2 rounded-2xl  text-gray-700 bg-gray-200">
-                {c.name}
-              </li>
-            </Link>
-          ))}
+          
+            {cats &&
+              cats.length &&
+              cats.map((c) => (
+                <Link key={c._id} className="link" to={`/?cat=${c.name}`}>
+                  <span className="text-xl px-6 py-2 rounded-2xl  text-gray-700 bg-gray-200">
+                    {c.name}
+                  </span>
+                </Link>
+              ))}
+          
         </div>
       </div>
       <div className="sidebarItem">

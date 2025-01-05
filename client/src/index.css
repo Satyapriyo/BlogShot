@@ -8,7 +8,7 @@
 }
 
 body{
-  background: #ffffff;
+  background: #ffffff !important;
 }
 .fontnew {
   font-family: "Josefin Sans", sans-serif;

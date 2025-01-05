@@ -9,5 +9,9 @@ export default {
     require("@tailwindcss/typography")({
       className: "wysiwyg",
     }),
+    
   ],
+  daisyui: {
+    themes: false,
+  },
 };

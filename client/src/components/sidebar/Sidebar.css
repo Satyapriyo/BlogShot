@@ -58,3 +58,8 @@
   font-size: 16px;
   margin-left: 10px;
 }
+
+.img-container{
+  aspect-ratio: 1;
+  overflow: hidden;
+}
