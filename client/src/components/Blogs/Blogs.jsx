@@ -6,7 +6,7 @@ import logoUser from "../../assets/profile-default.svg";
 const Blogs = ({ post }) => {
   const pf = "https://blog-api-or6z.onrender.com/images/";
   return (
-    <div className="flex bg-white hover:shadow-xl shadow-sm duration-200 md:p-3 cursor-pointer duration-300 overflow-hidden justify-between rounded-lg">
+    <div className="flex bg-white hover:shadow-xl shadow-sm  md:p-3 cursor-pointer duration-300 overflow-hidden justify-between rounded-lg">
       <div className="w-[70%]"> 
         <div className="">
           {post.catagories.map((p) => {
