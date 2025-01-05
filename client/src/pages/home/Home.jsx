@@ -36,10 +36,17 @@ const Home = () => {
   // }, [search]);
   return (
     <>
-      <Header />
-      <div className="home bg-gray-100 z-10">
-        {loading ? <Spinner /> : <Posts posts={posts} />}
-        <Sidebar />
+      {loading && (
+        <div className="spinner-overlay">
+          <Spinner />
+        </div>
+      )}
+      <div className={` bg-gray-100 ${loading ? "blur" : ""}`}>
+        <Header />
+        <div className="home">
+          <Posts posts={posts} />
+          <Sidebar />
+        </div>
       </div>
       <Footer />
     </>
