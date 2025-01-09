@@ -5,6 +5,7 @@ import Posts from "../../components/posts/Posts";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Spinner from "../../components/Spinner/Spinner";
 import axios from "axios";
+
 import { useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 

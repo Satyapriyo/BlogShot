@@ -1,11 +1,23 @@
 import React from "react";
 import "./Header.css";
+import { Helmet } from "react-helmet";
 import heroImg from "../../assets/blue-surface-with-study-tools-min.jpg";
 const Header = () => {
   return (
     <>
+      <Helmet>
+        <link
+          rel="preload"
+          as="image"
+          href="/src/assets/blue-surface-with-study-tools-min.jpg"
+        />
+      </Helmet>
       <div className="header bg-white">
-        <img className="headerImg -mt-20 " loading="eager" src={heroImg} alt="" />
+        <img
+          className="headerImg -mt-20 "
+          src="/src/assets/blue-surface-with-study-tools-min.jpg"
+          alt="LCP Image"
+        />
         <div className="headerTitles">
           <span className="-mt-[300px] md:text-[120px] text-5xl font-bold">
             BlogShot
@@ -13,6 +25,7 @@ const Header = () => {
           <span className="md:mt-16 mt-8  text-black md:text-xl text-md">
             Where stories connect and ideas ignite—welcome to your blogging
             haven!
+            
           </span>
         </div>
       </div>
