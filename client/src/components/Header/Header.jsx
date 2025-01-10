@@ -9,13 +9,13 @@ const Header = () => {
         <link
           rel="preload"
           as="image"
-          href="/src/assets/blue-surface-with-study-tools-min.jpg"
+          href={heroImg}
         />
       </Helmet>
       <div className="header bg-white">
         <img
           className="headerImg -mt-20 "
-          src="/src/assets/blue-surface-with-study-tools-min.jpg"
+          src={heroImg}
           alt="LCP Image"
         />
         <div className="headerTitles">
