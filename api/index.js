@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRouter = require("./routes/auth");
@@ -19,6 +21,14 @@ const corsOptions = {
 };
 app.use(express.json());
 app.use(cors(corsOptions));
+
+// Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport Serialization
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((user, done) => done(null, user));
 
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
