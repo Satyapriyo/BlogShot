@@ -42,9 +42,9 @@ const Home = () => {
           <Spinner />
         </div>
       )}
-      <div className={` bg-gray-100 ${loading ? "blur" : ""}`}>
+      <div className={`bg-gray-100 ${loading ? "blur" : ""}`}>
         <Header />
-        <div className="home">
+        <div className="home justify-around ">
           <Posts posts={posts} />
           <Sidebar />
         </div>

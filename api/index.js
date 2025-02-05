@@ -24,7 +24,7 @@ app.use(cors(corsOptions));
 
 // Initialize Passport
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 // Passport Serialization
 passport.serializeUser((user, done) => done(null, user));

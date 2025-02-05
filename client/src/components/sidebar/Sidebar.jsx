@@ -17,7 +17,7 @@ const Sidebar = () => {
   }, []);
   console.log(cats);
   return (
-    <div className="sidebar md:block hidden text-gray-700 h-full max-w-[300px]">
+    <div className="sidebar md:block hidden text-gray-700 h-full max-w-[300px] ">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME </span>
         <div className="img-container">
