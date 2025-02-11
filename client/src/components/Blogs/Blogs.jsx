@@ -7,7 +7,7 @@ const Blogs = ({ post }) => {
   const pf = "https://blog-api-or6z.onrender.com/images/";
   return (
     <div className="flex bg-white hover:shadow-xl shadow-sm  md:p-4 cursor-pointer duration-300 overflow-hidden justify-between rounded-lg">
-      <div className="w-[70%]"> 
+      <div className="w-[70%]">
         <div className="">
           {post.catagories.map((p) => {
             <span className="">{p}</span>;
@@ -56,8 +56,8 @@ const Blogs = ({ post }) => {
         {post.photo ? (
           <img
             className="postImg mt-10 object-cover object-center w-[300px] h-[100px] mb-8 lg:h-48 md:h-36 rounded-xl"
-            src={pf + post.photo}
-            alt=""
+            src={post.photo}
+            alt="post image"
           />
         ) : (
           <img

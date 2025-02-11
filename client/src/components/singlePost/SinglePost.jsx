@@ -10,8 +10,6 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import ReactMarkdown from "react-markdown";
 // import gradient from "random-gradient"
 
-
-
 const SinglePost = () => {
   const location = useLocation();
   const url = import.meta.env.VITE_API_URL;
@@ -141,9 +139,6 @@ const SinglePost = () => {
             </Link>
           </span>
         </div>
-        <div className="singlePostDesc wysiwyg wysiwyg-slate lg:wysiwyg-xl fontnew  max-w-[70vw]">
-          <ReactMarkdown components={renderers}>{post.desc}</ReactMarkdown>
-        </div>
         <div className="flex justify-end space-x-2 cursor-pointer">
           <button onClick={updateLikes} className="text-black text-3xl">
             {isLiked ? (
@@ -153,6 +148,9 @@ const SinglePost = () => {
             )}
           </button>
           <p className="text-3xl text-black ">{post.likes}</p>
+        </div>
+        <div className="singlePostDesc wysiwyg wysiwyg-slate lg:wysiwyg-xl fontnew  max-w-[70vw]">
+          <ReactMarkdown components={renderers}>{post.desc}</ReactMarkdown>
         </div>
       </div>
     </div>
