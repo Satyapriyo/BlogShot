@@ -4,10 +4,13 @@ import { GoHeart, GoHeartFill } from "react-icons/go";
 import { Context } from "../../context/Context";
 import { Link, redirect } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import  remove  from "../../../public/remove.svg";
+import  edit  from "../../../public/editicon.svg";
 import axios from "axios";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import ReactMarkdown from "react-markdown";
+
 // import gradient from "random-gradient"
 
 const SinglePost = () => {
@@ -86,6 +89,7 @@ const SinglePost = () => {
       </div>
     );
   }
+
   const handleEdit = () => {};
   const handleDelete = async (e) => {
     try {
@@ -108,28 +112,30 @@ const SinglePost = () => {
         ) : (
           <img className="singlePostImg" src={pf + post.photo} alt="" />
         )}
-        <h1 className="siglePostTitle font-bold text-5xl mt-10 mb-10 fontnew ">
+        <di className="siglePostTitle font-bold text-5xl mt-10 mb-10 fontnew ">
           <div className="text-black">{post.title}</div>
           {post.username === user.username && (
             <div className="singlePostEditContainer">
-              <Link
+              {/* <Link
                 to={{
                   pathname: `/editor/${post._id}`,
-                  state: { initialData: { post } },
                 }}
+                state={{initialData:post}}
               >
-                <i
+                <button
                   onClick={handleEdit}
-                  className="singlePostIcon fa-regular fa-pen-to-square"
-                ></i>
-              </Link>
-              <i
-                className="singlePostIcon fa-sharp fa-solid fa-trash"
-                onClick={handleDelete}
-              ></i>
+                  className="singlePostIcon font-bold text-3xl "
+                >
+                  <img src={edit} width={30} height={30} alt="editIcon" />
+                  
+                </button>
+              </Link> */}
+              <button onClick={handleDelete} className="singlePostIcon tooltip " data-tip="remove">
+                <img src={remove} width={30} height={30} alt="" />
+              </button>
             </div>
           )}
-        </h1>
+        </di>
 
         <div className="singlePostInfo">
           <span>

@@ -3,14 +3,14 @@ import { useState } from "react"; // Choose a theme, e.g., "github.css"
 
 // import "./style.css";
 const EditorSection = (props) => {
-  const initialData = props.initialData;
-  const [data, setData] = useState("");
+  console.log(props);
+  const [data, setData] = useState(props.initialData || "");
   return (
     <Editor
-      initialValue={data}
+      
       disableLocalStorage={true}
       immediatelyRender={false}
-      defaultValue="The new wave"
+      defaultValue={data}
       editable={false}
       onUpdate={(editor) => {
         setData(editor?.storage.markdown.getMarkdown());

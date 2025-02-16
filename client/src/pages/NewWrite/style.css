@@ -1,7 +1,27 @@
 /* .new {
   pointer-events: none;
 } */
+ 
+.writeIcon{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid;
+  margin-top: 30px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: rgb(158, 157, 157);
+  cursor: pointer;
+}
 
+.writeFormGroup{
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+}
 .btn-slate {
   background: rgb(18, 18, 18) !important;
 }
