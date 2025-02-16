@@ -109,7 +109,7 @@ export default function NewNavbr() {
             <div className="flex">
               <p className="content-center text-black font-bold">
                 {" "}
-                Hi {user.username}
+                Hi {user.username} 👋🏻
               </p>
               <div className="dropdown dropdown-end">
                 <div
@@ -118,7 +118,10 @@ export default function NewNavbr() {
                   className="btn btn-ghost btn-circle avatar "
                 >
                   <div className="w-10 rounded-full">
-                    <img alt="user" src={userImage} />
+                    <img
+                      alt="user"
+                      src={user.profilePic != "" ? user.profilePic : userImage}
+                    />
                   </div>
                 </div>
                 <div className="shadow-xl">
@@ -232,7 +235,9 @@ export default function NewNavbr() {
                     <div className="w-10 rounded-full">
                       <img
                         className="topImg"
-                        src={userImage}
+                        src={
+                          user.profilePic != "" ? user.profilePic : userImage
+                        }
                         alt="user image"
                         srcSet=""
                       />

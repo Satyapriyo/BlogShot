@@ -11,6 +11,9 @@ const catagoriesRoute = require("./routes/catagories");
 const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 
 require("dotenv").config();
 // app.use(express.urlencoded({extended:true}))

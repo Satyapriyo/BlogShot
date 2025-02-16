@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
       httpOnly: true, // Prevent JavaScript access to the cookie
       secure: process.env.NODE_ENV === "production", // Use only over HTTPS in production
       maxAge: 3600000, // Token expires in 1 hour
-      //sameSite: "none", // Cross-site access is limited
+      sameSite: "none", // Cross-site access is limited
     });
     res.status(200).json({ user, token });
   } catch (err) {
