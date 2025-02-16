@@ -113,7 +113,7 @@ const NewWrite = () => {
             />
           </div>
           <div className="writeFormGroup">
-            <button type="submit" className="btn btn-slate  ml-5 mt-10 mb-20">
+            <button type="submit" className="btn ml-5 mt-10 mb-20">
               Publish
             </button>
           </div>

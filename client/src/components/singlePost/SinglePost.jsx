@@ -4,8 +4,8 @@ import { GoHeart, GoHeartFill } from "react-icons/go";
 import { Context } from "../../context/Context";
 import { Link, redirect } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import  remove  from "../../../public/remove.svg";
-import  edit  from "../../../public/editicon.svg";
+import remove from "../../../public/remove.svg";
+import edit from "../../../public/editicon.svg";
 import axios from "axios";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -130,9 +130,35 @@ const SinglePost = () => {
                   
                 </button>
               </Link> */}
-              <button onClick={handleDelete} className="singlePostIcon tooltip " data-tip="remove">
-                <img src={remove} width={30} height={30} alt="" />
+              <button
+                className="   tooltip"
+                data-tip="remove"
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+              >
+               <img src={remove} width={30} height={30} alt="" />
               </button>
+              <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                  <p className="py-4">
+                    Press ESC key or click the button below to close
+                  </p>
+                  <div className="modal-action">
+                    <button
+                      onClick={handleDelete}
+                      className=" btn text-white  btn-error"
+                     
+                    >
+                      Delete
+                    </button>
+                    <form method="dialog">
+                      
+                      <button className="btn">Close</button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
             </div>
           )}
         </di>
