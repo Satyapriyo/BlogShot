@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Blogs.css";
+import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import logoUser from "../../assets/profile-default.svg";
 
 const pf = "https://blog-api-or6z.onrender.com/images/";
+
 const Blogs = ({ post }) => {
+  const { user } = useContext(Context);
   const pf = "https://blog-api-or6z.onrender.com/images/";
   return (
-    
     <div className="flex bg-white hover:shadow-xl shadow-sm  md:p-4 cursor-pointer duration-300 overflow-hidden justify-between rounded-lg">
       <div className="w-[70%]">
         <div className="">
