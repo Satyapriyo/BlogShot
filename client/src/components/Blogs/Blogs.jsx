@@ -8,6 +8,7 @@ const pf = "https://blog-api-or6z.onrender.com/images/";
 const Blogs = ({ post }) => {
   const pf = "https://blog-api-or6z.onrender.com/images/";
   return (
+    
     <div className="flex bg-white hover:shadow-xl shadow-sm  md:p-4 cursor-pointer duration-300 overflow-hidden justify-between rounded-lg">
       <div className="w-[70%]">
         <div className="">
@@ -15,7 +16,11 @@ const Blogs = ({ post }) => {
             <span className="">{p}</span>;
           })}
           <div className="flex justify-between my-8 items-center w-[10%]">
-            <img src={logoUser} width={25} alt="creator image" />
+            <img
+              src={user.profilePic != "" ? user.profilePic : logoUser}
+              width={25}
+              alt="creator image"
+            />
             <p className="pl-2">{post.username}</p>
           </div>
           <Link
