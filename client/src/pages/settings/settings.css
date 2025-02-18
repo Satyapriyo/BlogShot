@@ -23,6 +23,8 @@
 .settingsForm{
     display: flex;
     flex-direction: column;
+    max-width: 400px;
+
 }
 .settingsPP{
     display: flex;
@@ -53,9 +55,7 @@
     margin-top: 20px;
 
 }
-.settingsForm >input{
-    
-}
+
 .settingsSubmit{
     width: 150px;
     align-self: center;

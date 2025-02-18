@@ -4,42 +4,79 @@ import { Context } from "../../context/Context";
 import userImage from "../../assets/profile-default.svg";
 import Sidebar from "../../components/sidebar/Sidebar";
 import axios from "axios";
+import uploadImg from "../../../public/upload.svg";
+import toast, { Toaster } from "react-hot-toast";
 
 const Settings = () => {
   const url = import.meta.env.VITE_API_URL;
   const { user } = useContext(Context);
+  const [img, setImg] = useState("");
+  const [imageurl, setImageurl] = useState("");
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [username, setUsername] = useState(user?.username || "");
   const [file, setFile] = useState(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
+    e.preventDefault();
+    setLoading(true);
     setFile(e.target.files[0]);
-  };
+    setImg(e.target.files[0].name);
+    const files = e.target.files[0];
 
+    if (files) {
+      const data = new FormData();
+      data.append("file", files);
+      data.append("upload_preset", "practice01");
+      data.append("cloud_name", "duyocx2j0");
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/duyocx2j0/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImage = await res.json();
+      console.log(uploadedImage.url);
+      setImageurl(uploadedImage.url);
+    }
+    setLoading(false);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSuccess(false);
     setError(null);
 
-    if (password && password !== confirmPassword) {
-      setError("Passwords do not match!");
+    if (!password || !confirmPassword) {
+      setError("Please enter a new password.");
       return;
     }
 
+    if (password !== confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
+    console.log(user);
     const updatedUser = {
       userId: user._id,
-      username,
-      ...(password && { password }),
+      password,
+      profilePic: imageurl,
     };
 
     try {
-      await axios.put(`${url}/user/${user._id}`, updatedUser);
+      const res = await axios.put(`${url}/user/${user._id}`, updatedUser, {
+        withCredentials: true, // Ensure cookies are sent
+      });
       setSuccess(true);
+      toast.success("Successfully Logged In.");
     } catch (err) {
-      setError("Failed to update profile. Try again.");
+      console.error(err);
+      toast.error("Something went wrong");
+      setError(
+        err.response?.data?.message || "Failed to update password. Try again."
+      );
     }
   };
 
@@ -71,52 +108,64 @@ const Settings = () => {
         </div>
 
         <form
-          className="settingsForm bg-white shadow-xl max-w-[400px] md:pl-16 md:mx-auto p-6"
+          className="settingsForm bg-white rounded-xl shadow-xl max-w-[400px] p-10 md:mx-auto"
           onSubmit={handleSubmit}
         >
-          <label> Profile Picture</label>
-          <div className="settingsPP">
-            <img src={file ? URL.createObjectURL(file) : userImage} alt="Profile" />
-            <label htmlFor="fileInput">
-              <i className="settingsPPIcon fa-solid fa-circle-user fa-bounce"></i>
-              <p className="mt-2">Change profile icon</p>
+          <div className="flex flex-col mx-auto">
+            <label className="font-bold">Profile Picture</label>
+            <div className="settingsPP">
+              <img
+                src={file ? URL.createObjectURL(file) : userImage}
+                alt="Profile"
+              />
+              <label htmlFor="fileInput">
+                <img
+                  className="cursor-pointer"
+                  src={uploadImg}
+                  alt="uploadImage"
+                  width={30}
+                  height={30}
+                />
+                <p className="mt-2">
+                  {loading ? "Loading..." : file ? img : "Upload Image"}
+                </p>
+              </label>
+              <input
+                type="file"
+                id="fileInput"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+            </div>
+            <h1 className="md:text-2xl mt-3 font-bold">Change the password</h1>
+            <label className="text-gray-700 text-lg mt-4 my-2">Password</label>
+            <input
+              type="password"
+              className="input bg-gray-100 text-black input-bordered w-full max-w-xs"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label className="text-gray-700 text-lg mt-4 my-2">
+              Confirm Password
             </label>
-            <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleFileChange} />
+            <input
+              type="password"
+              className="input bg-gray-100 text-black input-bordered w-full max-w-xs"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            {error && <p className="text-red-500 mt-2">{error}</p>}
+            {success && (
+              <p className="text-green-500 mt-2">
+                Profile updated successfully!
+              </p>
+            )}
+            <button className="btn  mx-auto mt-3 mb-10 md:mt-6">Submit</button>
           </div>
-
-          <label className="text-gray-700 mt-4">Username</label>
-          <input
-            type="text"
-            className="input bg-gray-100 text-black input-bordered w-full max-w-xs"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-
-          <label className="text-gray-700 mt-4">Password</label>
-          <input
-            type="password"
-            className="input bg-gray-100 text-black input-bordered w-full max-w-xs"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <label className="text-gray-700 mt-4">Confirm Password</label>
-          <input
-            type="password"
-            className="input bg-gray-100 text-black input-bordered w-full max-w-xs"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-
-          {error && <p className="text-red-500 mt-2">{error}</p>}
-          {success && <p className="text-green-500 mt-2">Profile updated successfully!</p>}
-
-          <button className="btn  mx-auto mt-3 mb-10 md:mt-6">
-            Submit
-          </button>
         </form>
       </div>
       <Sidebar />
+      <Toaster />
     </div>
   );
 };

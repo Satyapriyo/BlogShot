@@ -29,6 +29,7 @@ router.put("/:id", verifyToken, async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       req.body.password = await bcrypt.hash(req.body.password, salt);
     }
+    
 
     // Update user
     const updatedUser = await User.findByIdAndUpdate(
@@ -80,23 +81,23 @@ router.get("/:id", async (req, res) => {
 });
 
 // UPDATE PROFILE PICTURE
-router.put("/:id/profile-pic", verifyToken, upload.single("profilePic"), async (req, res) => {
-  if (req.body.userId !== req.params.id) {
-    return res.status(401).json({ message: "Unauthorized action" });
-  }
+// router.put("/:id/profile-pic", verifyToken, upload.single("profilePic"), async (req, res) => {
+//   if (req.body.userId !== req.params.id) {
+//     return res.status(401).json({ message: "Unauthorized action" });
+//   }
 
-  try {
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      { profilePic: req.file.path },
-      { new: true }
-    );
+//   try {
+//     const updatedUser = await User.findByIdAndUpdate(
+//       req.params.id,
+//       { profilePic: req.file.path },
+//       { new: true }
+//     );
 
-    res.status(200).json(updatedUser);
-  } catch (err) {
-    console.error("Profile Pic Update Error:", err);
-    res.status(500).json({ error: "Server error, try again later." });
-  }
-});
+//     res.status(200).json(updatedUser);
+//   } catch (err) {
+//     console.error("Profile Pic Update Error:", err);
+//     res.status(500).json({ error: "Server error, try again later." });
+//   }
+// });
 
 module.exports = router;
