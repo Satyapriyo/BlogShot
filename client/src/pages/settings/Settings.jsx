@@ -7,6 +7,8 @@ import axios from "axios";
 import uploadImg from "../../../public/upload.svg";
 import toast, { Toaster } from "react-hot-toast";
 
+import remove from "../../../public/remove.svg";
+
 const Settings = () => {
   const url = import.meta.env.VITE_API_URL;
   const { user } = useContext(Context);
@@ -81,38 +83,45 @@ const Settings = () => {
   };
 
   return (
-    <div className="settings bg-gray-100">
+    <div className="settings bg-gray-100 fontnew">
       <div className="settingsWrapper">
         <div className="settingsTitle md:mb-10 mb-10">
           <span className="text-gray-700 md:text-3xl font-medium">
             Update Your Account
           </span>
-          <button className="btn btn-error text-white">
-            <div className="tooltip" data-tip="Delete Account">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-                />
-              </svg>
-            </div>
+          <button
+            className="  mt-2 tooltip"
+            data-tip="Delete Account"
+            onClick={() => document.getElementById("my_modal_1").showModal()}
+          >
+            <img src={remove} width={30} height={30} alt="" />
           </button>
+          <dialog id="my_modal_1" className="modal">
+            <div className="modal-box">
+              <p className="py-4">
+                Press ESC key or click the button below to close
+              </p>
+              <div className="modal-action">
+                <button
+                  // onClick={handleDelete}
+                  className=" btn text-white  btn-error"
+                >
+                  Delete
+                </button>
+                <form method="dialog">
+                  <button className="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
 
         <form
-          className="settingsForm bg-white rounded-xl shadow-xl max-w-[400px] p-10 md:mx-auto"
+          className="settingsForm bg-white rounded-xl shadow-xl max-w-[330px] p-10 md:mx-auto"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col mx-auto">
-            <label className="font-bold">Profile Picture</label>
+            <label className="font-bold text-xl">Profile Picture</label>
             <div className="settingsPP">
               <img
                 src={file ? URL.createObjectURL(file) : userImage}
@@ -137,7 +146,7 @@ const Settings = () => {
                 onChange={handleFileChange}
               />
             </div>
-            <h1 className="md:text-2xl mt-3 font-bold">Change the password</h1>
+            <h1 className="md:text-2xl mt-3 font-bold">Update password</h1>
             <label className="text-gray-700 text-lg mt-4 my-2">Password</label>
             <input
               type="password"
@@ -160,7 +169,7 @@ const Settings = () => {
                 Profile updated successfully!
               </p>
             )}
-            <button className="btn  mx-auto mt-3 mb-10 md:mt-6">Submit</button>
+            <button className="btn  mx-auto mt-3 md:mt-6">Submit</button>
           </div>
         </form>
       </div>
@@ -171,3 +180,4 @@ const Settings = () => {
 };
 
 export default Settings;
+

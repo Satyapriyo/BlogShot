@@ -51,7 +51,7 @@ const NewWrite = () => {
     }
   };
   return (
-    <div className="bg-white z-50 w-full h-full min-h-[90vh] items-center flex flex-col new">
+    <div className="bg-white z-50 w-full h-full min-h-[90vh] items-center flex flex-col new fontnew">
       <div>
         {file && (
           <img

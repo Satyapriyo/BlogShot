@@ -14,7 +14,7 @@ const Navbar = () => {
     dispatch({ type: "LOGOUT" });
   };
   return (
-    <div className="top">
+    <div className="top bg-transparent">
       <div className="topLeft">
         <img src={logoNew} width={120} alt="" />
       </div>
