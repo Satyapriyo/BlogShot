@@ -19,7 +19,7 @@ const Blogs = ({ post }) => {
           })}
           <div className="flex justify-between my-8 items-center w-[10%]">
             <img
-              src={user.profilePic != "" ? user.profilePic : logoUser}
+              src={user.profilePic != null ? user.profilePic : logoUser}
               width={25}
               alt="creator image"
             />
