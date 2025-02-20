@@ -120,7 +120,9 @@ export default function NewNavbr() {
                   <div className="w-10 rounded-full">
                     <img
                       alt="user"
-                      src={user.profilePic != "" ? user.profilePic : userImage}
+                      src={
+                        user.profilePic != null ? user.profilePic : userImage
+                      }
                     />
                   </div>
                 </div>
