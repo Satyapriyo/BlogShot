@@ -5,11 +5,8 @@ const Footer = () => {
     <div className="">
       <footer className="w-full  bg-white text-black">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <a href="/" aria-label="Go to the home page" className="flex justify-center ">
-              <img src={logo} width={200} alt="company logo" />
-            </a>
-            <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-2 mb-10 border-b border-gray-200">
+          <div className="max-w-3xl mx-auto mt-3">
+            <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-2 mb-5 border-b border-gray-200">
               <li>
                 <a href="#" className=" hover:text-gray-500">
                   Docs
@@ -52,7 +49,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <div className="flex space-x-10 justify-center items-center mb-14">
+            {/* <div className="flex space-x-10 justify-center items-center">
               <a
                 href="#"
                 aria-label="Go to the twitter"
@@ -123,8 +120,18 @@ const Footer = () => {
                   />
                 </svg>
               </a>
-            </div>
-            <span className="text-lg  pb-2 text-center block">
+            </div> */}
+            <a
+              href="/"
+              aria-label="Go to the home page"
+              className="flex justify-center "
+            >
+              {/* <img src={logo} width={400} alt="company logo" /> */}
+              <span className="fontnew font-extrabold lg:text-[28rem] md:text-[20rem]">
+                BlogShot
+              </span>
+            </a>
+            <span className="text-lg -mt-20 text-center block">
               ©<a href="https://pagedone.io/">BlogShot</a> 2024, All rights
               reserved.
             </span>
