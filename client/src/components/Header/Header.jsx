@@ -9,7 +9,7 @@ const Header = () => {
         <link
           rel="preload"
           as="image"
-          href={heroImg}
+          href="https://res.cloudinary.com/duyocx2j0/image/upload/v1748272326/blue-surface-with-study-tools-min_yfzak1.jpg"
         />
       </Helmet>
       <div className="header bg-white">
