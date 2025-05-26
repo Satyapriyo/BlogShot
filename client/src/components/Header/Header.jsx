@@ -15,7 +15,7 @@ const Header = () => {
       <div className="header bg-white">
         <img
           className="headerImg -mt-20 "
-          src={heroImg}
+          src="https://res.cloudinary.com/duyocx2j0/image/upload/v1748272326/blue-surface-with-study-tools-min_yfzak1.jpg"
           alt="LCP Image"
         />
         <div className="headerTitles">
