@@ -62,7 +62,7 @@ const SinglePost = () => {
           {post.photo == "" ? (
             <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[300px]"></div>
           ) : (
-            <img className="singlePostImg" src={pf + post.photo} alt="" />
+            <img className="singlePostImg" src={post.photo} alt="Post image" />
           )}
           <h1 className="siglePostTitle font-bold text-5xl mt-10 mb-10 fontnew ">
             <div className="text-black">{post.title}</div>
@@ -110,7 +110,7 @@ const SinglePost = () => {
         {post.photo == "" ? (
           <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[300px]"></div>
         ) : (
-          <img className="singlePostImg" src={pf + post.photo} alt="" />
+          <img className="singlePostImg" src={post.photo} alt="" />
         )}
         <di className="siglePostTitle font-bold text-5xl mt-10 mb-10 fontnew ">
           <div className="text-black">{post.title}</div>
@@ -137,7 +137,7 @@ const SinglePost = () => {
                   document.getElementById("my_modal_1").showModal()
                 }
               >
-               <img src={remove} width={30} height={30} alt="" />
+                <img src={remove} width={30} height={30} alt="" />
               </button>
               <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
@@ -148,12 +148,10 @@ const SinglePost = () => {
                     <button
                       onClick={handleDelete}
                       className=" btn text-white  btn-error"
-                     
                     >
                       Delete
                     </button>
                     <form method="dialog">
-                      
                       <button className="btn">Close</button>
                     </form>
                   </div>

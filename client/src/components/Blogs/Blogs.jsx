@@ -65,7 +65,7 @@ const Blogs = ({ post }) => {
         {post.photo ? (
           <img
             className="postImg mt-10 object-cover object-center w-[300px] h-[100px] mb-8 lg:h-48 md:h-36 rounded-xl"
-            src={pf + post.photo}
+            src={post.photo}
             alt="post image"
           />
         ) : (

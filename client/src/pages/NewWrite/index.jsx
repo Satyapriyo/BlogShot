@@ -32,15 +32,24 @@ const NewWrite = () => {
     };
     if (file) {
       const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("name", fileName);
+      // const fileName = Date.now() + file.name;
       data.append("file", file);
-      newPost.photo = fileName;
-      try {
-        await axios.post("https://blog-api-or6z.onrender.com/api/upload", data);
-      } catch (err) {
-        console.log("the error is \n");
-      }
+      data.append("upload_preset", "practice01");
+      data.append("cloud_name", "duyocx2j0");
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/duyocx2j0/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImage = await res.json();
+      newPost.photo = uploadedImage.url;
+      // try {
+      //   await axios.post("https://blog-api-or6z.onrender.com/api/upload", data);
+      // } catch (err) {
+      //   console.log("the error is \n");
+      // }
     }
     try {
       const res = await axios.post(`${url}/post`, newPost);
