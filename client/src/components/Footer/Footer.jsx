@@ -124,14 +124,14 @@ const Footer = () => {
             <a
               href="/"
               aria-label="Go to the home page"
-              className="flex justify-center "
+              className="flex justify-center -mt-20 "
             >
               {/* <img src={logo} width={400} alt="company logo" /> */}
               <span className="fontnew font-extrabold lg:text-[28rem] md:text-[20rem]">
                 BlogShot
               </span>
             </a>
-            <span className="text-lg -mt-20 text-center block">
+            <span className="text-lg -pt-32 text-center block">
               ©<a href="https://pagedone.io/">BlogShot</a> 2024, All rights
               reserved.
             </span>
