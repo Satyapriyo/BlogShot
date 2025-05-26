@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { Helmet } from "react-helmet";
-import heroImg from "../../assets/blue-surface-with-study-tools-min.jpg";
+
 const Header = () => {
   return (
     <>
