@@ -63,6 +63,40 @@ const SinglePost = () => {
     typeof post?.desc === "string"
       ? post.desc.replace(/[#*_`>]/g, "").slice(0, 155)
       : "";
+  const origin =
+    typeof window !== "undefined" && window.location.origin
+      ? window.location.origin
+      : "";
+  const canonicalUrl =
+    origin && post?._id ? `${origin}/post/${post._id}` : origin || undefined;
+  const imageUrl =
+    typeof post?.photo === "string" && post.photo.length > 0
+      ? post.photo
+      : undefined;
+  const jsonLd =
+    post?.title && descriptionFallback
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: descriptionFallback,
+          image: imageUrl ? [imageUrl] : undefined,
+          author: post.username
+            ? {
+                "@type": "Person",
+                name: post.username,
+              }
+            : undefined,
+          datePublished: post.createdAt || undefined,
+          dateModified: post.updatedAt || post.createdAt || undefined,
+          mainEntityOfPage: canonicalUrl
+            ? {
+                "@type": "WebPage",
+                "@id": canonicalUrl,
+              }
+            : undefined,
+        }
+      : null;
 
   if (!user) {
     return (
@@ -79,6 +113,43 @@ const SinglePost = () => {
                 property="og:description"
                 content={descriptionFallback}
               />
+            )}
+            {canonicalUrl && (
+              <link rel="canonical" href={canonicalUrl} />
+            )}
+            {canonicalUrl && (
+              <meta property="og:url" content={canonicalUrl} />
+            )}
+            {imageUrl && <meta property="og:image" content={imageUrl} />}
+            {imageUrl && (
+              <meta name="twitter:image" content={imageUrl} />
+            )}
+            <meta name="twitter:title" content={pageTitle} />
+            {descriptionFallback && (
+              <meta
+                name="twitter:description"
+                content={descriptionFallback}
+              />
+            )}
+            {post.createdAt && (
+              <meta
+                property="article:published_time"
+                content={post.createdAt}
+              />
+            )}
+            {post.updatedAt && (
+              <meta
+                property="article:modified_time"
+                content={post.updatedAt}
+              />
+            )}
+            {post.username && (
+              <meta property="article:author" content={post.username} />
+            )}
+            {jsonLd && (
+              <script type="application/ld+json">
+                {JSON.stringify(jsonLd)}
+              </script>
             )}
           </Helmet>
           {post.photo == "" ? (
@@ -137,6 +208,43 @@ const SinglePost = () => {
           <meta property="og:title" content={pageTitle} />
           {descriptionFallback && (
             <meta property="og:description" content={descriptionFallback} />
+          )}
+          {canonicalUrl && (
+            <link rel="canonical" href={canonicalUrl} />
+          )}
+          {canonicalUrl && (
+            <meta property="og:url" content={canonicalUrl} />
+          )}
+          {imageUrl && <meta property="og:image" content={imageUrl} />}
+          {imageUrl && (
+            <meta name="twitter:image" content={imageUrl} />
+          )}
+          <meta name="twitter:title" content={pageTitle} />
+          {descriptionFallback && (
+            <meta
+              name="twitter:description"
+              content={descriptionFallback}
+            />
+          )}
+          {post.createdAt && (
+            <meta
+              property="article:published_time"
+              content={post.createdAt}
+            />
+          )}
+          {post.updatedAt && (
+            <meta
+              property="article:modified_time"
+              content={post.updatedAt}
+            />
+          )}
+          {post.username && (
+            <meta property="article:author" content={post.username} />
+          )}
+          {jsonLd && (
+            <script type="application/ld+json">
+              {JSON.stringify(jsonLd)}
+            </script>
           )}
         </Helmet>
         {post.photo == "" ? (

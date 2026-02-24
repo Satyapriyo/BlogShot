@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block common junk
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://blog-shot-client.vercel.app/sitemap.xml
+

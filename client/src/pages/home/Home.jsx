@@ -49,6 +49,36 @@ const Home = () => {
           property="og:description"
           content="Explore fresh content from writers around the world and find your next favorite blog on BlogShot."
         />
+        <link
+          rel="canonical"
+          href={
+            typeof window !== "undefined" && window.location.origin
+              ? `${window.location.origin}/`
+              : undefined
+          }
+        />
+        <script
+          type="application/ld+json"
+        >{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "BlogShot",
+          url:
+            typeof window !== "undefined" && window.location.origin
+              ? window.location.origin
+              : undefined,
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate:
+                (typeof window !== "undefined" && window.location.origin
+                  ? window.location.origin
+                  : "") + "/?search={search_term_string}",
+            },
+            "query-input": "required name=search_term_string",
+          },
+        })}</script>
       </Helmet>
       {loading && (
         <div className="spinner-overlay">
