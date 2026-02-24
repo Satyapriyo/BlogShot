@@ -1,8 +1,21 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
+import { Helmet } from "react-helmet";
 const Contact = () => {
   return (
     <div>
+      <Helmet>
+        <title>Contact BlogShot – Get in touch</title>
+        <meta
+          name="description"
+          content="Have questions or feedback about BlogShot? Reach out to our team using the contact form."
+        />
+        <meta property="og:title" content="Contact BlogShot – Get in touch" />
+        <meta
+          property="og:description"
+          content="Start a conversation with the BlogShot team and let us know how we can help."
+        />
+      </Helmet>
       <div className="relative flex items-top min-h-screen bg-white sm:items-center sm:pt-0">
         <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
           <div className=" overflow-hidden">

@@ -5,6 +5,7 @@ import Posts from "../../components/posts/Posts";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Spinner from "../../components/Spinner/Spinner";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 import { useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
@@ -37,6 +38,18 @@ const Home = () => {
   // }, [search]);
   return (
     <>
+      <Helmet>
+        <title>BlogShot – Discover trending blogs & stories</title>
+        <meta
+          name="description"
+          content="Read the latest blogs, tutorials, and stories from creators on BlogShot. Discover trending posts across categories and topics."
+        />
+        <meta property="og:title" content="BlogShot – Discover trending blogs & stories" />
+        <meta
+          property="og:description"
+          content="Explore fresh content from writers around the world and find your next favorite blog on BlogShot."
+        />
+      </Helmet>
       {loading && (
         <div className="spinner-overlay">
           <Spinner />

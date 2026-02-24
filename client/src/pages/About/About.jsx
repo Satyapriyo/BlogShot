@@ -12,9 +12,26 @@ const stats = [
   { name: "Paid time off", value: "Unlimited" },
 ];
 import Footer from "../../components/Footer/Footer";
+import { Helmet } from "react-helmet";
+
 export default function About() {
   return (
     <div className="fontnew">
+      <Helmet>
+        <title>About BlogShot – Learn more about our blogging platform</title>
+        <meta
+          name="description"
+          content="Discover the story behind BlogShot, our mission, and how we help writers share their ideas with the world."
+        />
+        <meta
+          property="og:title"
+          content="About BlogShot – Learn more about our blogging platform"
+        />
+        <meta
+          property="og:description"
+          content="BlogShot is built to empower storytellers and bloggers with a beautiful, easy-to-use writing experience."
+        />
+      </Helmet>
       <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
         <img
           alt=""

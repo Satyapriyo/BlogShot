@@ -10,6 +10,7 @@ import axios from "axios";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import ReactMarkdown from "react-markdown";
+import { Helmet } from "react-helmet";
 
 // import gradient from "random-gradient"
 
@@ -55,10 +56,31 @@ const SinglePost = () => {
     await axios.put(`${url}/post/${path}/like`);
     setPost((prevPost) => ({ ...prevPost, likes: prevPost.likes + 1 }));
   };
+  const pageTitle = post?.title
+    ? `${post.title} – BlogShot`
+    : "Blog post – BlogShot";
+  const descriptionFallback =
+    typeof post?.desc === "string"
+      ? post.desc.replace(/[#*_`>]/g, "").slice(0, 155)
+      : "";
+
   if (!user) {
     return (
       <div className="singlePost fontnew">
         <div className="singlePostWrapper">
+          <Helmet>
+            <title>{pageTitle}</title>
+            {descriptionFallback && (
+              <meta name="description" content={descriptionFallback} />
+            )}
+            <meta property="og:title" content={pageTitle} />
+            {descriptionFallback && (
+              <meta
+                property="og:description"
+                content={descriptionFallback}
+              />
+            )}
+          </Helmet>
           {post.photo == "" ? (
             <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[300px]"></div>
           ) : (
@@ -107,6 +129,16 @@ const SinglePost = () => {
   return (
     <div className="singlePost fontnew">
       <div className="singlePostWrapper">
+        <Helmet>
+          <title>{pageTitle}</title>
+          {descriptionFallback && (
+            <meta name="description" content={descriptionFallback} />
+          )}
+          <meta property="og:title" content={pageTitle} />
+          {descriptionFallback && (
+            <meta property="og:description" content={descriptionFallback} />
+          )}
+        </Helmet>
         {post.photo == "" ? (
           <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[300px]"></div>
         ) : (
