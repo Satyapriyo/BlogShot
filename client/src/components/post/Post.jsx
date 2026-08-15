@@ -9,19 +9,22 @@ const Post = ({ post }) => {
         <img
           className="postImg object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
           src={pf + post.photo}
-          alt=""
+          alt={post.title || "Blog cover image"}
         />
       ) : (
         <img
           className="postImg object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
           src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt=""
+          alt="Default blog cover image"
         />
       )}
       <div className="postInfo">
-        {post.catagories.map((p) => {
-          <span className="postCat">{p}</span>;
-        })}
+        {Array.isArray(post.catagories) &&
+          post.catagories.map((cat) => (
+            <span key={cat} className="postCat">
+              {cat}
+            </span>
+          ))}
         <Link
           className="link"
           onClick={() => {

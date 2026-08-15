@@ -1,3 +1,6 @@
+import Footer from "../../components/Footer/Footer";
+import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
 
 const links = [
   { name: "Open roles", href: "#" },
@@ -5,18 +8,34 @@ const links = [
   { name: "Our values", href: "#" },
   { name: "Meet our leadership", href: "#" },
 ];
+
 const stats = [
-  { name: "Offices worldwide", value: "12" },
-  { name: "Full-time colleagues", value: "300+" },
-  { name: "Hours per week", value: "40" },
-  { name: "Paid time off", value: "Unlimited" },
+  { n: "01", value: "12", label: "Offices worldwide" },
+  { n: "02", value: "300+", label: "Full-time colleagues" },
+  { n: "03", value: "40", label: "Hours per week" },
+  { n: "04", value: "Unlimited", label: "Paid time off" },
 ];
-import Footer from "../../components/Footer/Footer";
-import { Helmet } from "react-helmet";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const staggerParent = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+  },
+};
 
 export default function About() {
   return (
-    <div className="fontnew">
+    <div className="min-h-screen bg-white text-[#1A1A18]">
       <Helmet>
         <title>About BlogShot – Learn more about our blogging platform</title>
         <meta
@@ -31,127 +50,163 @@ export default function About() {
           property="og:description"
           content="BlogShot is built to empower storytellers and bloggers with a beautiful, easy-to-use writing experience."
         />
-      </Helmet>
-      <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
-        <img
-          alt=""
-          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
         />
-        <div
-          aria-hidden="true"
-          className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
-        >
-          <div
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-            className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-          />
-        </div>
-        <div
-          aria-hidden="true"
-          className="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
-        >
-          <div
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-            className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-          />
-        </div>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              About Us
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              At BlogShot, we believe in the power of stories to inspire,
-              connect, and transform. Whether you’re a seasoned writer or just
-              starting your blogging journey, this is the place where your
-              thoughts can take flight. <br />
-              <br />
-              Our platform is a vibrant community where ideas are shared,
-              creativity flourishes, and every voice is valued. From personal
-              experiences to professional insights, from in-depth articles to
-              quick tips, we provide a space for every kind of storyteller.{" "}
-              <br />
-              <br />
-              We understand that great ideas can come from anywhere, and here at
-              BlogShot, they find a home. Whether you're writing to inspire,
-              inform, or just express yourself, our platform is built to support
-              your passion. With an easy-to-use interface and a network of
-              fellow bloggers and readers, BlogShot is the perfect place to grow
-              your ideas into something powerful. <br />
-              <br />
-              So, take a moment, explore, and add your voice to the
-              conversation. Here, every post is a spark, and together, we light
-              up the world with the stories that matter.
-            </p>
-          </div>
-          <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
-              {links.map((link) => (
-                <a key={link.name} href={link.href}>
-                  {link.name} <span aria-hidden="true">&rarr;</span>
-                </a>
-              ))}
-            </div>
-            <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-              {stats.map((stat) => (
-                <div key={stat.name} className="flex flex-col-reverse">
-                  <dt className="text-base leading-7 text-gray-300">
-                    {stat.name}
-                  </dt>
-                  <dd className="text-2xl font-bold leading-9 tracking-tight text-white">
-                    {stat.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </div>
-      <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
-        <h1 className="text-center text-3xl font-bold">Testimonials </h1>
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
-        <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
-        <div className="mx-auto max-w-2xl lg:max-w-4xl">
+      </Helmet>
 
-          {/* <img alt="" src={logo} className="mx-auto h-12" /> */}
-          <figure className="mt-10">
-            <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+      <style>{`
+        .font-display { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        @media (prefers-reduced-motion: reduce) {
+          * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+      `}</style>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[#1A1A18] py-24 text-white sm:py-32">
+        <span
+          aria-hidden="true"
+          className="font-display pointer-events-none absolute -right-10 -top-10 select-none text-[26vw] font-medium leading-none text-white/[0.04] sm:text-[16vw]"
+        >
+          About
+        </span>
+
+        <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerParent}
+            className="max-w-2xl"
+          >
+            <motion.p
+              variants={fadeUp}
+              className="font-mono text-xs uppercase tracking-[0.2em] text-[#C75D3C]"
+            >
+              Who we are
+            </motion.p>
+            <motion.h1
+              variants={fadeUp}
+              className="font-display mt-4 text-5xl font-medium leading-[1.05] tracking-tight sm:text-6xl"
+            >
+              Stories deserve a
+              <br />
+              <span className="italic text-[#C75D3C]">good home.</span>
+            </motion.h1>
+            <motion.div
+              variants={fadeUp}
+              className="font-sans mt-8 space-y-5 text-base leading-relaxed text-white/70 sm:text-lg"
+            >
               <p>
-                “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-                expedita voluptas culpa sapiente alias molestiae. Numquam
-                corrupti in laborum sed rerum et corporis.”
+                At BlogShot, we believe stories can inspire, connect, and
+                transform. Whether you're a seasoned writer or just starting
+                out, this is the place where your thoughts can take flight.
               </p>
+              <p>
+                Our platform is a community where ideas are shared, creativity
+                flourishes, and every voice is valued — from personal essays to
+                professional deep dives, from quick tips to long reads.
+              </p>
+              <p>
+                Great ideas can come from anywhere, and here they find a home.
+                With a simple interface and a network of fellow writers and
+                readers, BlogShot helps you grow an idea into something that
+                matters.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Links */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerParent}
+            className="font-sans mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/10 pt-8 text-sm font-semibold"
+          >
+            {links.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                variants={fadeUp}
+                className="inline-flex items-center gap-1.5 text-white/80 transition-colors hover:text-[#C75D3C]"
+              >
+                {link.name}
+                <span aria-hidden="true">&rarr;</span>
+              </motion.a>
+            ))}
+          </motion.div>
+
+          {/* Stats */}
+          <motion.dl
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={staggerParent}
+            className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {stats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={fadeUp}
+                className="border-t border-white/10 pt-5"
+              >
+                <dt className="font-mono text-xs text-[#C75D3C]">{stat.n}</dt>
+                <dd className="font-display mt-3 text-3xl font-medium tracking-tight">
+                  {stat.value}
+                </dd>
+                <dt className="font-sans mt-1 text-sm text-white/60">
+                  {stat.label}
+                </dt>
+              </motion.div>
+            ))}
+          </motion.dl>
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      <section className="relative overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <span
+          aria-hidden="true"
+          className="font-display pointer-events-none absolute -bottom-16 left-1/2 -translate-x-1/2 select-none text-[14rem] italic leading-none text-[#1A1A18]/[0.03] sm:text-[18rem]"
+        >
+          “
+        </span>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="relative mx-auto max-w-3xl"
+        >
+          <p className="font-mono text-center text-xs uppercase tracking-[0.2em] text-[#C75D3C]">
+            What writers say
+          </p>
+          <figure className="mt-10">
+            <blockquote className="font-display text-center text-2xl font-medium leading-snug tracking-tight sm:text-3xl">
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              expedita voluptas culpa sapiente alias molestiae. Numquam corrupti
+              in laborum sed rerum et corporis."
             </blockquote>
-            <figcaption className="mt-10">
+            <figcaption className="mt-8 flex items-center justify-center gap-3">
               <img
                 alt=""
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                className="mx-auto h-10 w-10 rounded-full"
+                className="h-11 w-11 rounded-full object-cover ring-1 ring-[#E3DDD0]"
               />
-              <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-                <div className="font-semibold text-gray-900">Judith Black</div>
-                <svg
-                  width={3}
-                  height={3}
-                  viewBox="0 0 2 2"
-                  aria-hidden="true"
-                  className="fill-gray-900"
-                >
-                  <circle r={1} cx={1} cy={1} />
-                </svg>
-                <div className="text-gray-600">CEO of Workcation</div>
+              <div className="font-sans text-left text-sm">
+                <p className="font-semibold text-[#1A1A18]">Judith Black</p>
+                <p className="text-[#1A1A18]/55">CEO of Workcation</p>
               </div>
             </figcaption>
           </figure>
-        </div>
+        </motion.div>
       </section>
+
       <Footer />
     </div>
   );

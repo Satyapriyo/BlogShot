@@ -3,17 +3,32 @@ import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import logo from "../../assets/b.png";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const url = import.meta.env.VITE_API_URL;
   const [isFetching, setIsFetching] = useState(false);
   const handleSubmit = async (e) => {
-    setIsFetching(true);
     e.preventDefault();
+    setFormError("");
     setError(false);
+
+    if (!username.trim() || !email.trim() || !password.trim()) {
+      setFormError("Please fill in all fields.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setFormError("Password should be at least 6 characters long.");
+      return;
+    }
+
+    setIsFetching(true);
     try {
       const res = await axios.post(`${url}/auth/register`, {
         username,
@@ -24,7 +39,7 @@ const Register = () => {
       toast.success("Account created successfully");
       setTimeout(() => {
         res.data && window.location.replace("/login");
-      }, [1000]);
+      }, 1000);
 
       // console.log(res);
     } catch (err) {
@@ -65,8 +80,9 @@ const Register = () => {
                   </label>
                   <input
                     onChange={(e) => setUsername(e.target.value)}
-                    className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none "
-                    placeholder="abc"
+                    autoComplete="username"
+                    className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-2 text-sm w-full outline-none "
+                    placeholder="Username"
                   />
                 </div>
                 <div className="w-full flex flex-col gap-2">
@@ -76,8 +92,9 @@ const Register = () => {
                   <input
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none "
-                    placeholder="abc@mail.com"
+                    autoComplete="email"
+                    className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-2 text-sm w-full outline-none "
+                    placeholder="you@example.com"
                   />
                 </div>
               </div>
@@ -85,18 +102,38 @@ const Register = () => {
                 <label className="font-semibold text-xs text-gray-400 ">
                   Password
                 </label>
-                <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="password"
-                  className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-5 text-sm w-full outline-none"
-                  placeholder="••••••••"
-                />
+                <div className="relative">
+                  <input
+                    onChange={(e) => setPassword(e.target.value)}
+                    type={showPassword ? "text" : "password"}
+                    autoComplete="new-password"
+                    className="border text-gray-700 bg-gray-100 rounded-lg px-3 py-2 mb-2 text-sm w-full outline-none pr-10"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-2.5 text-gray-600 hover:text-gray-800 transition"
+                    aria-label="Toggle password visibility"
+                  >
+                    {showPassword ? (
+                      <AiOutlineEyeInvisible size={20} />
+                    ) : (
+                      <AiOutlineEye size={20} />
+                    )}
+                  </button>
+                </div>
               </div>
+              {formError && (
+                <p className="text-xs text-red-500 mb-3" role="alert">
+                  {formError}
+                </p>
+              )}
               <div className="w-full flex flex-col gap-2">
                 <div className="flex gap-2">
-                  <p className="text-sm">Don't have an Accout </p>
+                  <p className="text-sm">Already have an account?</p>
                   <Link to="/login" className="text-sm text-blue-600">
-                    SignIn
+                    Sign in
                   </Link>
                 </div>
               </div>
@@ -104,9 +141,9 @@ const Register = () => {
                 <button
                   type="submit"
                   disabled={isFetching}
-                  className="py-1 px-8 bg-blue-500 btn-slate hover:bg-blue-800 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none"
+                  className="py-1 px-8 bg-blue-500 btn-slate hover:bg-blue-800 disabled:bg-blue-300 disabled:cursor-not-allowed focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg cursor-pointer select-none"
                 >
-                  SignUp
+                  {isFetching ? "Creating account..." : "Sign up"}
                 </button>
               </div>
             </form>

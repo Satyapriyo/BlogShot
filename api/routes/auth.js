@@ -25,16 +25,21 @@ router.post("/register", async (req, res) => {
 
 //LOGIN
 router.post("/login", async (req, res) => {
-
   try {
     const user = await User.findOne({
       username: req.body.username,
     });
 
-    !user && res.status(400).json("wrong username");
+    if (!user) {
+      return res.status(400).json({ success: false, message: "Wrong username" });
+    }
+
     const validate = await bcrypt.compare(req.body.password, user.password);
 
-    !validate && res.status(400).json("wrong password");
+    if (!validate) {
+      return res.status(400).json({ success: false, message: "Wrong password" });
+    }
+
     const { password, ...others } = user._doc;
     const token = jwt.sign(
       others,
@@ -43,14 +48,15 @@ router.post("/login", async (req, res) => {
     );
 
     res.cookie("token", token, {
-      httpOnly: true, // Prevent JavaScript access to the cookie
-      secure: process.env.NODE_ENV === "production", // Use only over HTTPS in production
-      maxAge: 3600000, // Token expires in 1 hour
-      sameSite: "none", // Cross-site access is limited
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 3600000,
+      sameSite: "none",
     });
-    res.status(200).json({ user, token });
+    res.status(200).json({ success: true, user: others, token });
   } catch (err) {
-    res.status(500).json(err);
+    console.error("Login error:", err);
+    res.status(500).json({ success: false, message: "Server error during login", error: err.message });
   }
 });
 

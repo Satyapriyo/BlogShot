@@ -1,261 +1,219 @@
 import { useState } from "react";
-import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { Context } from "../../context/Context";
 import { useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import logoNew from "../../assets/blogshot.png";
 import userImage from "../../assets/profile-default.svg";
 
-const callsToAction = [
-  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon },
-];
-
 export default function NewNavbr() {
   const { user, dispatch } = useContext(Context);
-  const navigate = useNavigate();
-  const [query, setQuery] = useState("");
-  const handleSearch = () => {
-    if (query.trim()) {
-      navigate(`/?search=${query}`);
-    }
-  };
-  const handelLogout = () => {
-    dispatch({ type: "LOGOUT" });
-  };
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    setMobileMenuOpen(false);
+  };
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+    { name: "Write", path: "/newwrite" },
+  ];
+
   return (
-    <header className="md:p-4 p-3 z-20 w-full sticky top-0 bg-gray-50 ">
-      <nav
-        aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8"
-      >
-        <div className="flex lg:flex-1">
-          <Link to="/" className=" p-1.5">
-            <img alt="Blogshot" src={logoNew} width={120} height={10} />
-          </Link>
-        </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-          >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon aria-hidden="true" className="h-6 w-6" />
-          </button>
-        </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-8">
+    <header className="sticky top-0 z-50 w-full border-b border-[#E3DDD0] bg-white/90 backdrop-blur-md">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between gap-3 sm:h-[4.5rem] sm:gap-4">
+          {/* Logo */}
           <Link
             to="/"
-            className="text-sm h-9 font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
+            className="flex-shrink-0 transition-opacity hover:opacity-80"
           >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="text-sm h-9 font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="text-sm h-9 font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
-          >
-            Contact
-          </Link>
-          <Link
-            to="/newwrite"
-            className="text-sm h-9 text-center font-semibold leading-6 hover:bg-gray-200 duration-300 rounded-md px-3.5 py-1.5 text-gray-900"
-          >
-            Write
-          </Link>
-          <label className="input input-bordered bg-slate-100 flex items-center gap-2">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-              hidefocus="true"
-              className="grow text-black"
-              placeholder="Search"
+            <img
+              alt="BlogShot"
+              src={logoNew}
+              width={120}
+              height={40}
+              className="h-8 sm:h-10 w-auto"
             />
-            <button type="submit" onClick={handleSearch}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="size-6"
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="font-sans relative px-4 py-2 text-sm font-medium text-[#1A1A18]/70 transition-colors duration-200 hover:text-[#1A1A18]"
               >
-                <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
-                <path
-                  fillRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-            <kbd className="kbd kbd-sm bg-slate-50">⌘</kbd>
-            <kbd className="kbd kbd-sm bg-slate-50">K</kbd>
-          </label>
-        </PopoverGroup>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          {user ? (
-            <div className="flex">
-              <p className="content-center text-black font-bold">
-                {" "}
-                Hi {user.username} 👋🏻
-              </p>
-              <div className="dropdown dropdown-end">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className="btn btn-ghost btn-circle avatar "
-                >
-                  <div className="w-10 rounded-full">
-                    <img
-                      alt="user"
-                      src={
-                        user.profilePic != null ? user.profilePic : userImage
-                      }
-                    />
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Spacer */}
+          <div className="hidden md:block md:flex-1" />
+
+          {/* User Section - Desktop */}
+          <div className="hidden md:flex md:items-center md:gap-4">
+            {user ? (
+              <div className="flex items-center gap-3">
+                <span className="font-sans hidden text-sm text-[#1A1A18]/70 lg:block">
+                  Hi {user.username}
+                </span>
+                <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar h-10 w-10 p-0 ring-1 ring-[#E3DDD0] hover:ring-[#C75D3C]"
+                  >
+                    <div className="w-full overflow-hidden rounded-full">
+                      <img
+                        alt="user profile"
+                        src={user.profilePic || userImage}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="shadow-xl">
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-white shadow-xl text-black rounded-box z-[1] mt-3 w-32 p-2 "
+                    className="dropdown-content menu w-48 border border-[#E3DDD0] bg-white p-2 font-sans shadow-lg"
                   >
-                    {/* <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge bg-gray-100 border-gray-100">New</span>
-                  </a>
-                </li> */}
-                    <li className="hover:bg-slate-100 duration-200 rounded-lg w-28">
-                      <Link to="/settings">Settings</Link>
-                    </li>
-                    <li className="hover:bg-slate-100  duration-200 rounded-lg w-28">
-                      <Link to="/login" onClick={handelLogout}>
-                        Logout
+                    <li>
+                      <Link
+                        to="/settings"
+                        className="text-[#1A1A18]/80 hover:bg-[#1A1A18]/5 hover:text-[#1A1A18]"
+                      >
+                        Settings
                       </Link>
+                    </li>
+                    <li>
+                      <button
+                        onClick={handleLogout}
+                        className="text-[#1A1A18]/80 hover:bg-[#C75D3C]/10 hover:text-[#C75D3C]"
+                      >
+                        Logout
+                      </button>
                     </li>
                   </ul>
                 </div>
               </div>
-            </div>
-          ) : (
-            //{user.profilePic}
-            <div className="flex space-x-3">
-              <Link
-                className="text-sm font-semibold leading-6 duration-300 btn-slate hover:bg-slate-600 rounded-md px-3.5 py-1.5 text-gray-100"
-                to="/login"
-              >
-                Login
-              </Link>{" "}
-              <Link
-                className="text-sm font-semibold leading-6 duration-300 rounded-md hover:bg-slate-200 px-3.5 py-1.5 text-gray-900"
-                to="/register"
-              >
-                Register
-              </Link>
-            </div>
-          )}
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/login"
+                  className="font-sans px-4 py-2 text-sm font-medium text-[#1A1A18]/70 transition-colors duration-200 hover:text-[#1A1A18]"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="font-sans rounded-full bg-[#1A1A18] px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#C75D3C]"
+                >
+                  Register
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="inline-flex items-center justify-center rounded-full p-2.5 text-[#1A1A18] transition-colors duration-200 hover:bg-[#1A1A18]/5 md:hidden"
+            aria-label="Toggle menu"
+          >
+            <Bars3Icon className="h-6 w-6" />
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
-        className="lg:hidden"
+        className="md:hidden"
       >
-        <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
-            <Link to="#" className=" p-1.5">
-              <span className="sr-only">Your Company</span>
+        <div
+          className="fixed inset-0 z-40 bg-[#1A1A18]/20"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white shadow-xl sm:max-w-sm">
+          <div className="flex items-center justify-between border-b border-[#E3DDD0] p-4">
+            <Link
+              to="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex-shrink-0"
+            >
               <img
-                alt="tailwind logo"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt="BlogShot"
+                src={logoNew}
+                width={100}
+                height={40}
                 className="h-8 w-auto"
               />
             </Link>
             <button
-              type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className=" rounded-md p-2.5 text-gray-700"
+              className="rounded-full p-2 text-[#1A1A18] transition-colors hover:bg-[#1A1A18]/5"
+              aria-label="Close menu"
             >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+              <XMarkIcon className="h-6 w-6" />
             </button>
           </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
+
+          <div className="p-4">
+            {/* Mobile Navigation Links */}
+            <div className="divide-y divide-[#E3DDD0]">
+              {navLinks.map((link) => (
                 <Link
-                  to="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-sans block py-3.5 text-base font-medium text-[#1A1A18]/80 transition-colors duration-200 hover:text-[#C75D3C]"
                 >
-                  Home
+                  {link.name}
                 </Link>
-                <Link
-                  to="/about"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  About
-                </Link>
-                <Link
-                  to="/contact"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Contact
-                </Link>
-                <Link
-                  to="/write"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Write
-                </Link>
-                <Link
-                  className="topListItem link btn-slate"
-                  to="/login"
-                  onClick={handelLogout}
-                >
-                  {user && (
-                    <div className="text-black font-semibold mt-2">Logout </div>
-                  )}
-                </Link>
-              </div>
-              <div className="py-2">
-                {user ? (
-                  <Link to="/settings" className="">
-                    {" "}
-                    <div className="w-10 rounded-full">
-                      <img
-                        className="topImg"
-                        src={
-                          user.profilePic != "" ? user.profilePic : userImage
-                        }
-                        alt="user image"
-                        srcSet=""
-                      />
-                    </div>
+              ))}
+            </div>
+
+            <div className="mt-4 border-t border-[#E3DDD0] pt-4">
+              {user ? (
+                <div className="space-y-2">
+                  <Link
+                    to="/settings"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="font-sans block rounded-lg px-4 py-3 text-base font-medium text-[#1A1A18]/80 transition-colors duration-200 hover:bg-[#1A1A18]/5"
+                  >
+                    Settings
                   </Link>
-                ) : (
-                  <div>
-                    <Link className="topListItem link" to="login">
-                      Login
-                    </Link>{" "}
-                    <Link className="topListItem link" to="register">
-                      Register
-                    </Link>
-                  </div>
-                )}
-              </div>
+                  <button
+                    onClick={handleLogout}
+                    className="font-sans block w-full rounded-lg px-4 py-3 text-left text-base font-medium text-[#C75D3C] transition-colors duration-200 hover:bg-[#C75D3C]/10"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <Link
+                    to="/login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="font-sans block rounded-lg px-4 py-3 text-center text-base font-medium text-[#1A1A18]/80 transition-colors duration-200 hover:bg-[#1A1A18]/5"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="font-sans block rounded-full bg-[#1A1A18] px-4 py-3 text-center text-base font-semibold text-white transition-colors duration-200 hover:bg-[#C75D3C]"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </DialogPanel>

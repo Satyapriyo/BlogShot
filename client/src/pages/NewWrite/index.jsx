@@ -41,7 +41,7 @@ const NewWrite = () => {
         {
           method: "POST",
           body: data,
-        }
+        },
       );
       const uploadedImage = await res.json();
       newPost.photo = uploadedImage.url;
